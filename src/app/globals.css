@@ -5,6 +5,7 @@
   --foreground: #1a1a1a;
   --muted: #6b6b6b;
   --border: #e2e0db;
+  --accent: #1400ff;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -21,6 +22,8 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-mono), monospace;
+  font-size: 15px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
