@@ -13,8 +13,8 @@ export default function CollectionPage() {
           Collection
         </h2>
         <div className="columns-2 md:columns-3 gap-6">
-          {collection.map((item, i) => (
-            <CollectionCard key={item.slug} item={item} coverHeight={["aspect-square", "aspect-video", "aspect-[3/4]", "aspect-[4/3]", "aspect-[2/3]"][i % 5]} />
+          {collection.map((item) => (
+            <CollectionCard key={item.slug} item={item} />
           ))}
         </div>
       </main>

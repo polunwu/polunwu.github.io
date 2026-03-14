@@ -1,12 +1,22 @@
 import { CollectionItem } from "@/data/collection";
 
-export default function CollectionCard({ item, coverHeight = "aspect-video" }: { item: CollectionItem; coverHeight?: string }) {
+export default function CollectionCard({ item }: { item: CollectionItem }) {
   return (
     <a
       href={`/collection/${item.slug}`}
       className="block mb-6 break-inside-avoid group"
     >
-      <div className={`bg-[var(--border)] ${coverHeight} w-full mb-3`} />
+      <div className={`${item.coverAspect} w-full mb-3 overflow-hidden`}>
+        {item.cover ? (
+          <img
+            src={`/${item.cover}`}
+            alt={item.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-[var(--border)]" />
+        )}
+      </div>
       <p className="text-xs text-[var(--muted)] mb-1">
         ↑ {item.year}_{" "}
         <span className="text-[var(--foreground)] group-hover:opacity-60 transition-opacity">
