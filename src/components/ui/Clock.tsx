@@ -16,6 +16,6 @@ export default function Clock() {
   }, []);
 
   return (
-    <span className="text-sm text-[var(--muted)] tabular-nums">{time}</span>
+    <span className="text-sm text-[var(--muted)] tabular-nums bg-[var(--background)] px-1">{time}</span>
   );
 }

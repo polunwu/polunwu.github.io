@@ -1,7 +1,7 @@
 const navLinks = [
-  { label: "Experience", href: "#experience" },
+  { label: "Experience", href: "/#experience" },
   { label: "Collection", href: "/collection" },
-  { label: "Research", href: "#research" },
+  { label: "Research", href: "/#research" },
 ];
 
 const contactLinks = [
@@ -12,9 +12,9 @@ const contactLinks = [
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col gap-6 pt-1">
+    <aside className="flex flex-col gap-6 pt-1 sticky top-6 self-start">
       <a
-        href="#"
+        href="/"
         className="font-[family-name:var(--font-cormorant)] text-xl font-semibold leading-tight"
         style={{ color: "var(--accent)" }}
       >
