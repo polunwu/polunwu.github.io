@@ -8,11 +8,22 @@ export default function CollectionCard({ item }: { item: CollectionItem }) {
     >
       <div className={`${item.coverAspect} w-full mb-3 overflow-hidden`}>
         {item.cover ? (
-          <img
-            src={`/${item.cover}`}
-            alt={item.title}
-            className="w-full h-full object-cover"
-          />
+          item.cover.endsWith(".mp4") ? (
+            <video
+              src={`/${item.cover}`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={`/${item.cover}`}
+              alt={item.title}
+              className="w-full h-full object-cover"
+            />
+          )
         ) : (
           <div className="w-full h-full bg-[var(--border)]" />
         )}
