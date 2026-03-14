@@ -15,7 +15,7 @@ const papers = [
 
 export default function Research() {
   return (
-    <section id="research" className="px-8 py-24 md:px-16">
+    <section id="research">
       <div className="max-w-4xl">
         <h2 className="text-xs uppercase tracking-widest text-[var(--muted)] mb-12">
           Research
