@@ -2,11 +2,13 @@ export default function About() {
   return (
     <section id="about">
       <h2 className="font-[family-name:var(--font-cormorant)] text-xl italic font-medium mb-6 text-[var(--foreground)]">
-        Engineer at the intersection of systems, interfaces, and intelligence.
+        Software Engineer at the intersection of systems, interfaces, and
+        intelligence.
       </h2>
       <div className="space-y-4 text-sm text-[var(--muted)] leading-relaxed max-w-lg">
         <p>
-          Polun Wu is an engineer driven by curiosity about what&apos;s next.
+          Polun Wu is an Software Engineer driven by curiosity about what&apos;s
+          next.
         </p>
         <p>
           His path spans mechanical engineering research in precision 3D

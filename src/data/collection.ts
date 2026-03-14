@@ -1,6 +1,7 @@
 export type CollectionItem = {
   slug: string;
-  year: number;
+  yearStart: number;
+  yearEnd?: number;
   title: string;
   description: string;
   cover: string;
@@ -20,7 +21,8 @@ export type CollectionItem = {
 export const collection: CollectionItem[] = [
   {
     slug: "giloo-platform",
-    year: 2024,
+    yearStart: 2021,
+    yearEnd: 2026,
     title: "Giloo Streaming Platform",
     description:
       "Frontend modernization of a streaming platform serving 100K+ monthly active users.",
@@ -29,26 +31,27 @@ export const collection: CollectionItem[] = [
     tags: {
       type: "product",
       tech: ["Next.js", "TypeScript", "TanStack Query", "Tailwind"],
-      domain: ["streaming", "media"],
+      domain: ["streaming", "media", "giloo"],
     },
   },
   {
     slug: "creator-system",
-    year: 2023,
+    yearStart: 2023,
+    yearEnd: 2026,
     title: "Content Creator System",
     description:
-      "End-to-end system for video uploads, customizable content pages, and revenue management.",
+      "End-to-end creator platform for video uploads, content customization, and revenue management, featuring AI subtitle translation.",
     cover: "images/giloo-creator-platform/cover.jpg",
     coverAspect: "aspect-square",
     tags: {
       type: "product",
-      tech: ["React", "TypeScript"],
-      domain: ["streaming", "creator-tools"],
+      tech: ["React", "TypeScript", "Redux Toolkit Query", "Material UI"],
+      domain: ["streaming", "creator-tools", "giloo"],
     },
   },
   {
     slug: "3d-ar-experiences",
-    year: 2021,
+    yearStart: 2021,
     title: "3D & Web AR Interactive Experiences",
     description:
       "Browser-based 3D visualizations and mobile AR experiences for clients.",
@@ -57,12 +60,12 @@ export const collection: CollectionItem[] = [
     tags: {
       type: "project",
       tech: ["Three.js", "GSAP", "WebAR"],
-      domain: ["creative", "interactive"],
+      domain: ["creative", "interactive", "polish"],
     },
   },
   {
     slug: "network-management-platform",
-    year: 2021,
+    yearStart: 2021,
     title: "Network Management Platform Redesign",
     description:
       "Restructured 30+ pages of a network management platform, introducing modern frontend stack and UI frameworks.",
@@ -70,13 +73,27 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-square",
     tags: {
       type: "project",
-      tech: ["Vue3", "SCSS"],
-      domain: ["network", "enterprise"],
+      tech: ["Vue3", "SCSS", "Javascript"],
+      domain: ["network", "enterprise", "polish"],
+    },
+  },
+  {
+    slug: "wassup-shopping",
+    yearStart: 2021,
+    title: "E-Commerce Site - Wassup Cat Litter",
+    description:
+      "Collaborative frontend development of a shopping site, including cart and member center with full API integration.",
+    cover: "images/wassup-shopping/cover.png",
+    coverAspect: "aspect-video",
+    tags: {
+      type: "project",
+      tech: ["Vue.js", "View in Rails", "GSAP", "SCSS"],
+      domain: ["e-commerce"],
     },
   },
   {
     slug: "portfolio-site",
-    year: 2026,
+    yearStart: 2026,
     title: "Personal Portfolio",
     description:
       "This site — a minimal portfolio built with Next.js and Tailwind.",
@@ -84,13 +101,13 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-[2/3]",
     tags: {
       type: "side-project",
-      tech: ["Next.js", "TypeScript", "Tailwind"],
+      tech: ["Next.js", "TypeScript", "Tailwind", "Radix UI"],
       domain: ["web"],
     },
   },
   {
     slug: "peek-implants",
-    year: 2019,
+    yearStart: 2019,
     title: "Customized PEEK Implants via 3D Printing",
     description:
       "Research on microporous surface modification for medical implants using precision 3D printing.",
@@ -99,7 +116,7 @@ export const collection: CollectionItem[] = [
     tags: {
       type: "research",
       tech: ["3D Printing", "PEEK"],
-      domain: ["biomedical", "manufacturing"],
+      domain: ["biomedical", "manufacturing", "master thesis"],
     },
   },
 ];

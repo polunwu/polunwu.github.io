@@ -29,7 +29,7 @@ export default function CollectionCard({ item }: { item: CollectionItem }) {
         )}
       </div>
       <p className="text-xs text-[var(--muted)] mb-1">
-        ↑ {item.year}_{" "}
+        ↑ {item.yearStart}{item.yearEnd ? `–${item.yearEnd}` : ""}_{" "}
         <span className="text-[var(--foreground)] group-hover:opacity-60 transition-opacity">
           &quot;{item.title}&quot;
         </span>

@@ -1,7 +1,7 @@
 const experiences = [
   {
     company: "GILOO Group Limited",
-    role: "Frontend Engineer",
+    role: "Software Engineer",
     period: "09/2021 – Present",
     location: "Remote, Taipei",
     highlights: [
@@ -43,7 +43,10 @@ export default function Experience() {
               </div>
               <ul className="md:col-span-2 space-y-3">
                 {exp.highlights.map((h, i) => (
-                  <li key={i} className="text-sm text-[var(--muted)] leading-relaxed pl-4 border-l border-[var(--border)]">
+                  <li
+                    key={i}
+                    className="text-sm text-[var(--muted)] leading-relaxed pl-4 border-l border-[var(--border)]"
+                  >
                     {h}
                   </li>
                 ))}
