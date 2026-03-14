@@ -8,9 +8,12 @@
 ## TODOs
 
 ### Collection page (`/collection`)
-- [ ] Build a Collection page aggregating all project experiences
+- [x] Build a Collection page aggregating all project experiences
   - Covers: product work, freelance, side projects
-- [ ] Tag system per project for future filtering
-  - Multi-dimensional tags: type (product / freelance / side project), tech stack, domain
+- [x] Tag system per project for future filtering
+  - Multi-dimensional tags: type (product / project / side-project / research), tech stack, domain
 - [ ] Visual relationship map across projects — Obsidian-style force graph
   - Not planned for implementation yet
+- [ ] Collection detail page per item (`/collection/[slug]`)
+  - [ ] Extend `CollectionItem` type with detail fields (e.g. long description, gallery, links)
+  - [ ] Populate detail data for each item

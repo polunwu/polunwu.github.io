@@ -49,6 +49,13 @@ To set up for the first time:
 
 The site will be live at `https://polunwu.github.io`.
 
+### Branch strategy
+
+- `staging` — development branch, push here does **not** trigger deploy
+- `main` — production branch, merging `staging` → `main` triggers build and deploy
+
+> Important: In GitHub repo Settings → Pages, Source must be set to **GitHub Actions** (not "Deploy from a branch"), otherwise GitHub will deploy on any branch push regardless of the workflow.
+
 ### Content Pattern
 
 Section components (`src/components/sections/`) are purely presentational. Content data (experience entries, research items, etc.) is defined as typed arrays at the top of each section file — there is no CMS or external data fetching. To update content, edit the data arrays directly in the relevant section file.
