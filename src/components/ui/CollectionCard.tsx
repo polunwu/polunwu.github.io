@@ -1,0 +1,26 @@
+import { CollectionItem } from "@/data/collection";
+
+export default function CollectionCard({ item, coverHeight = "aspect-video" }: { item: CollectionItem; coverHeight?: string }) {
+  return (
+    <a
+      href={`/collection/${item.slug}`}
+      className="block mb-6 break-inside-avoid group"
+    >
+      <div className={`bg-[var(--border)] ${coverHeight} w-full mb-3`} />
+      <p className="text-xs text-[var(--muted)] mb-1">
+        ↑ {item.year}_{" "}
+        <span className="text-[var(--foreground)] group-hover:opacity-60 transition-opacity">
+          &quot;{item.title}&quot;
+        </span>
+      </p>
+      <p className="text-xs text-[var(--muted)] leading-relaxed">
+        {item.description}
+      </p>
+      <div className="flex flex-wrap gap-1 mt-2">
+        <span className="text-xs text-[var(--accent)] opacity-60">
+          {item.tags.type}
+        </span>
+      </div>
+    </a>
+  );
+}

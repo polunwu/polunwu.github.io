@@ -1,5 +1,6 @@
 const navLinks = [
   { label: "Experience", href: "#experience" },
+  { label: "Collection", href: "/collection" },
   { label: "Research", href: "#research" },
 ];
 
