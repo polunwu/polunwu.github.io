@@ -73,7 +73,11 @@ export const collection: CollectionItem[] = [
       type: "project",
       tech: ["Nuxt.js", "Vue.js", "A-Frame", "glTF / GLB", "GSAP", "WebAR"],
       domain: ["creative", "interactive", "polish"],
-      capabilities: ["cross-discipline collaboration", "constraint-driven design", "iterative prototyping"],
+      capabilities: [
+        "cross-discipline collaboration",
+        "constraint-driven design",
+        "iterative prototyping",
+      ],
     },
     detail: {
       projectName: "FDPG 2021",
@@ -104,15 +108,64 @@ export const collection: CollectionItem[] = [
   {
     slug: "network-management-platform",
     yearStart: 2021,
-    title: "Network Management Platform Redesign",
+    title: "Network Management Platform Refactor",
     description:
-      "Restructured 30+ pages of a network management platform, introducing modern frontend stack and UI frameworks.",
+      "Restructured 40+ pages of a network management platform, introducing modern frontend stack and UI frameworks.",
     cover: "images/network-platform/cover.png",
     coverAspect: "aspect-square",
     tags: {
       type: "project",
-      tech: ["Vue3", "SCSS", "Javascript"],
+      tech: [
+        "Vue.js",
+        "TypeScript",
+        "Vuex",
+        "Vue Router",
+        "i18n",
+        "Kendo UI",
+        "ECharts",
+        "GoJS",
+        "Axios",
+        "SCSS",
+        "Vuedraggable",
+        "Vue CLI",
+        "Jest",
+      ],
       domain: ["network", "enterprise", "polish"],
+      capabilities: [
+        "Legacy system modernization",
+        "Scalable component architecture",
+        "Interactive data visualization",
+        "Design system implementation",
+      ],
+    },
+    detail: {
+      projectName: "PIXIS — Network Management System",
+      role: "Frontend Engineer",
+      collaboration:
+        "Built at Polish Design in collaboration with Product Manager and UI/UX Designer, alongside the client's Engineers",
+      descriptions: [
+        {
+          type: "text",
+          content:
+            "PIXIS is an enterprise network management system built for IT and network administrators overseeing complex, multi-site infrastructure. The platform provided a centralized interface for device discovery and inventory, network topology visualization, DHCP configuration, IP conflict detection, audit logging, and compliance rule enforcement across multiple organizational sites. Administrators could monitor switches, track host devices, and investigate security events from a customizable dashboard with draggable panels. The project was delivered as a fully functional frontend with mock API integration, dark/light theme support, and bilingual (English/Traditional Chinese) internationalization.",
+        },
+        {
+          type: "text",
+          content:
+            "The previous version of PIXIS was built on a jQuery foundation with multiple ad-hoc UI libraries that frequently conflicted in CSS namespacing, event handling, and component lifecycle — making new feature development increasingly unpredictable and costly. The refactor adopted Vue 3 as the core framework and consolidated the UI layer around a single enterprise component library, Kendo UI, eliminating inter-library conflicts at the root. The Composition API enabled the extraction of over 37 reusable composables (e.g., useGrid, useFilter, useToggle), replacing scattered jQuery DOM manipulation with declarative, testable logic units organized by domain. TypeScript was introduced to enforce type contracts across API boundaries and component props, surfacing integration errors earlier in the development cycle. Theming was standardized through SCSS variables shared across light and dark variants, replacing the patchwork of per-library style overrides from the legacy codebase. The refactor covered over 40+ product pages across 9 functional areas, and as a result, new feature pages could be scaffolded by composing existing hooks and components rather than duplicating imperative jQuery logic, significantly reducing the cost of iteration.",
+        },
+      ],
+      gallery: [
+        { src: "images/network-platform/gallery/1.webp", type: "image" },
+        { src: "images/network-platform/gallery/2.webp", type: "image" },
+        { src: "images/network-platform/gallery/3.webp", type: "image" },
+        { src: "images/network-platform/gallery/4.webp", type: "image" },
+        { src: "images/network-platform/gallery/5.webp", type: "image" },
+        { src: "images/network-platform/gallery/6.webp", type: "image" },
+        { src: "images/network-platform/gallery/7.webp", type: "image" },
+        { src: "images/network-platform/gallery/8.webp", type: "image" },
+      ],
+      links: [],
     },
   },
   {
