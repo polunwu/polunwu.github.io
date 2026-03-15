@@ -15,6 +15,7 @@ export type CollectionItem = {
     type: "product" | "project" | "side-project" | "research";
     tech: string[];
     domain: string[];
+    capabilities?: string[];
   };
   detail?: {
     projectName?: string;
@@ -72,6 +73,7 @@ export const collection: CollectionItem[] = [
       type: "project",
       tech: ["Nuxt.js", "Vue.js", "A-Frame", "glTF / GLB", "GSAP", "WebAR"],
       domain: ["creative", "interactive", "polish"],
+      capabilities: ["cross-discipline collaboration", "constraint-driven design", "iterative prototyping"],
     },
     detail: {
       projectName: "FDPG 2021",

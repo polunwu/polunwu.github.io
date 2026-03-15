@@ -28,16 +28,18 @@
 
 ### Portfolio project description writer
 
-Use this prompt to generate `descriptions` and `tags.tech` for a `CollectionItem`.
+Use this prompt to generate `descriptions`, `tags.tech`, and `tags.capabilities` for a `CollectionItem`.
 
 ```
-You are helping me write portfolio project descriptions. Given a current project folder, read though the hole project, output the following three items in en-US:
+You are helping me write portfolio project descriptions. Given a current project folder, read though the hole project, output the following four items in en-US:
 
 1. **Project Overview** — A concise paragraph describing the project's goal, target audience, core user journey, and key outcomes. Write in past tense. Avoid bullet points.
 
 2. **Technical Highlight** — A concise paragraph focusing on one specific technical area I specify. Describe the implementation approach, tools used, any non-obvious decisions or challenges, and the outcome. Include any cross-discipline collaboration if relevant. Write in past tense. Avoid bullet points.
 
 3. **Tech Tags** — A JavaScript array of technology/tool names used in the project, based on the stack and libraries mentioned.
+
+4. **Capability Tags** — A JavaScript array of 2–4 short strings describing the abstract problem-solving capabilities demonstrated in this project. Focus on transferable skills that go beyond tools. Only include what is clearly evidenced by the project.
 
 Keep the tone professional but human. Do not exaggerate. Only include what I provide — do not invent details.
 ```
