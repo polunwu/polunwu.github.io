@@ -16,6 +16,17 @@ export type CollectionItem = {
     tech: string[];
     domain: string[];
   };
+  detail?: {
+    projectName?: string;
+    role: string;
+    collaboration?: string;
+    descriptions: (
+      | { type: "text"; content: string }
+      | { type: "code"; content: string; language?: string }
+    )[];
+    gallery: { src: string; type: "image" | "video" }[];
+    links?: { label: string; href: string }[];
+  };
 };
 
 export const collection: CollectionItem[] = [
@@ -59,8 +70,21 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-square",
     tags: {
       type: "project",
-      tech: ["Three.js", "GSAP", "WebAR"],
+      tech: ["Nuxt.js", "Vue.js", "A-Frame", "glTF / GLB", "GSAP", "WebAR"],
       domain: ["creative", "interactive", "polish"],
+    },
+    detail: {
+      projectName: "FDPG 2021",
+      role: "Frontend Engineer",
+      collaboration: "Built at Polish Design in collaboration with Backend Engineer, Art Director and 3D Designer",
+      descriptions: [
+        { type: "text", content: "A time-gated interactive event platform built for Fourdesire's 2021 annual gathering. The experience guided registered participants through a series of unlockable activities — from scanning a physical AR marker to reveal their exclusive character, to joining live sessions on Google Meet and Gather.Town. The platform tracked real-time attendance, enforced phase-based content unlocks tied to the event schedule, and concluded with a post-event survey that revealed a downloadable desktop wallpaper upon completion." },
+        { type: "text", content: "The AR character reveal was built as a standalone HTML page using A-Frame and AR.js with custom pattern marker detection. When the camera recognizes the physical marker included in the participant's physical kit, the corresponding character's animated 3D model (glTF/GLB format) is loaded and rendered directly over the marker in real time. Users can interact with the model via single-finger drag to rotate and two-finger pinch to scale, powered by custom A-Frame gesture components. A screenshot feature composites the live camera feed and the 3D scene into a single image using Canvas API and merge-images, which participants can save and share on Instagram with a pre-filled hashtag.\n\nAchieving the final result required close, iterative collaboration with the 3D designer — experimenting with different export settings, polygon counts, texture formats, and animation baking to balance visual quality against mobile rendering performance within the WebAR environment." },
+      ],
+      gallery: [],
+      links: [
+        { label: "GitHub", href: "https://github.com/polunwu/fdpg" },
+      ],
     },
   },
   {
