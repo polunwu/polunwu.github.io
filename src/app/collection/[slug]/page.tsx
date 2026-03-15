@@ -58,9 +58,13 @@ export default async function CollectionDetailPage({
                     {block.content}
                   </h2>
                 ) : block.type === "text" ? (
-                  <p key={i} className="text-sm text-[var(--muted)] leading-relaxed">
-                    {block.content}
-                  </p>
+                  <div key={i} className="space-y-4">
+                    {block.content.split("\n\n").map((para, j) => (
+                      <p key={j} className="text-sm text-[var(--muted)] leading-relaxed">
+                        {para}
+                      </p>
+                    ))}
+                  </div>
                 ) : (
                   <pre
                     key={i}
