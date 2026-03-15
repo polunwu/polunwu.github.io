@@ -15,5 +15,10 @@
 - [ ] Visual relationship map across projects — Obsidian-style force graph
   - Not planned for implementation yet
 - [ ] Collection detail page per item (`/collection/[slug]`)
-  - [ ] Extend `CollectionItem` type with detail fields (e.g. long description, gallery, links)
-  - [ ] Populate detail data for each item
+  - [x] Extend `CollectionItem` type with detail fields (projectName, role, collaboration, descriptions, gallery, links)
+  - [x] descriptions supports `text` and `code` block union types
+  - [x] Implement detail page layout with TopNav, metadata, descriptions, tech tags, links, gallery
+  - [x] Populate detail data for `3d-ar-experiences` (FDPG 2021)
+  - [ ] Populate detail data for remaining items
+- [x] TopNav shared component (fixed, transparent background with per-element white fill)
+  - Used on detail pages; Sidebar remains on home and collection pages
