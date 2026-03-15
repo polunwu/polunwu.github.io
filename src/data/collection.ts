@@ -301,6 +301,13 @@ export const collection: CollectionItem[] = [
         },
       ],
       gallery: [],
+      gallery: [
+        { src: "images/peek/gallery/1.png", type: "image" },
+        { src: "images/peek/gallery/2.png", type: "image" },
+        { src: "images/peek/gallery/3.png", type: "image" },
+        { src: "images/peek/gallery/4.png", type: "image" },
+        { src: "images/peek/gallery/5.png", type: "image" },
+      ],
       links: [
         {
           label: "ASME Paper",
