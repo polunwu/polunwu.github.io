@@ -22,6 +22,7 @@ export type CollectionItem = {
     role: string;
     collaboration?: string;
     descriptions: (
+      | { type: "heading"; content: string }
       | { type: "text"; content: string }
       | { type: "code"; content: string; language?: string }
     )[];
@@ -178,8 +179,57 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-video",
     tags: {
       type: "project",
-      tech: ["Vue.js", "View in Rails", "GSAP", "SCSS"],
+      tech: [
+        "Ruby on Rails",
+        "Vue.js",
+        "Stimulus.js",
+        "GSAP",
+        "Axios",
+        "SCSS",
+        "Bootstrap",
+        "PostgreSQL",
+      ],
       domain: ["e-commerce"],
+      capabilities: [
+        "Cross-boundary frontend development",
+        "Animation and interaction design",
+      ],
+    },
+    detail: {
+      projectName: "Wassup — Cat Litter E-Commerce",
+      role: "Frontend Engineer",
+      collaboration:
+        "Built at Polish Design in collaboration with Backend Engineer and UI/UX Designer",
+      descriptions: [
+        {
+          type: "text",
+          content:
+            "Wassup was a B2C e-commerce platform built for a Taiwanese cat litter brand, targeting cat owners looking for a convenient way to purchase or subscribe to recurring shipments. The core user journey spanned product discovery, cart management, shipping configuration, and payment processing — with a parallel subscription path that handled recurring order scheduling. The platform shipped with a full admin dashboard for product, order, and subscription management. As the primary frontend engineer on the team, the work covered the entire client-side experience: component architecture, UI interactions, animations, and responsive design across all pages.",
+        },
+        { type: "heading", content: "Shopping Cart System" },
+        {
+          type: "text",
+          content:
+            "The shopping cart was designed to feel live and responsive across a server-rendered site — a challenge that required bridging the gap between static Rails pages and a reactive Vue component. Rather than rebuilding the site as a full SPA, a lightweight event-based communication pattern was used to let the product page trigger cart updates without coupling the two sides together. Cart state was kept centralized and consistently reflected in the UI, including discount code validation and shipping fee calculation, so users always had an accurate view of their order before reaching checkout.",
+        },
+        { type: "heading", content: "GSAP Animation" },
+        {
+          type: "text",
+          content:
+            "Adding an item to the cart was treated as a moment worth acknowledging — not just a silent state update. A short animation played on button click, using a sequenced timeline to give the interaction a sense of weight and playfulness that matched the brand's personality. The challenge was making the animation feel fluid without it slowing users down, which was solved by timing the cart drawer to open exactly as the animation resolved, keeping the experience snappy while still letting the moment land.",
+        },
+        { type: "heading", content: "Checkout Flow" },
+        {
+          type: "text",
+          content:
+            "The checkout summary panel needed to clearly communicate order details, discounts, and totals — and stay in sync with user input like coupon codes — without overwhelming the page. Separate component sets were built for one-time purchases and subscriptions, since the two flows had meaningfully different information to surface. Each handled discount feedback inline, giving users immediate visual confirmation of whether a code worked, which reduced friction at one of the most drop-off-prone steps in the funnel.",
+        },
+      ],
+      gallery: [
+        { src: "images/wassup-shopping/gallery/1.webp", type: "image" },
+        { src: "images/wassup-shopping/gallery/2.webp", type: "image" },
+      ],
+      links: [],
     },
   },
   {

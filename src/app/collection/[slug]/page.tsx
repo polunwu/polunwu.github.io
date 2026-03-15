@@ -53,7 +53,11 @@ export default async function CollectionDetailPage({
           {detail?.descriptions && detail.descriptions.length > 0 && (
             <div className="space-y-6 max-w-xl mb-16">
               {detail.descriptions.map((block, i) =>
-                block.type === "text" ? (
+                block.type === "heading" ? (
+                  <h2 key={i} className="text-sm font-medium text-[var(--foreground)] mt-8">
+                    {block.content}
+                  </h2>
+                ) : block.type === "text" ? (
                   <p key={i} className="text-sm text-[var(--muted)] leading-relaxed">
                     {block.content}
                   </p>
