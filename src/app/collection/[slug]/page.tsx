@@ -1,6 +1,7 @@
 import { collection } from "@/data/collection";
 import { notFound } from "next/navigation";
 import TopNav from "@/components/ui/TopNav";
+import Gallery from "@/components/ui/Gallery";
 
 export function generateStaticParams() {
   return collection.map((item) => ({ slug: item.slug }));
@@ -99,32 +100,10 @@ export default async function CollectionDetailPage({
 
           {/* Gallery */}
           {detail?.gallery && detail.gallery.length > 0 && (
-            <div className="columns-1 md:columns-2 gap-6">
-              {detail.gallery.map((media, i) => (
-                <div key={i} className="mb-6 break-inside-avoid">
-                  {media.type === "video" ? (
-                    <video
-                      src={`/${media.src}`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full"
-                    />
-                  ) : (
-                    <img
-                      src={`/${media.src}`}
-                      alt=""
-                      className="w-full"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
+            <Gallery items={detail.gallery} />
           )}
         </main>
       </div>
-
     </div>
   );
 }
