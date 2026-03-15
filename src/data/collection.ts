@@ -258,8 +258,55 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-[4/3]",
     tags: {
       type: "research",
-      tech: ["3D Printing", "PEEK"],
+      tech: [
+        "PEEK",
+        "3D Printing",
+        "Taguchi Method",
+        "ANOVA",
+        "SEM",
+        "Thermal Imaging",
+        "Hydroxyapatite Coating",
+        "Cold Spray Technology",
+        "Marlin Firmware",
+        "C++",
+        "Mechanical Engineering",
+      ],
       domain: ["biomedical", "manufacturing", "master thesis"],
+      capabilities: [
+        "Experimental Design & Optimization",
+        "Hardware Systems Development",
+        "Research-Driven Problem Solving",
+      ],
+    },
+    detail: {
+      projectName: "Customized PEEK Implants via 3D Printing",
+      role: "Researcher",
+      collaboration:
+        "Master's thesis at National Central University, under the supervision of Prof. Chao-Yaug Liao",
+      descriptions: [
+        {
+          type: "text",
+          content:
+            "This research explored the feasibility of manufacturing patient-specific PEEK (polyetheretherketone) implants using fused deposition modeling (FDM) 3D printing, targeting orthopedic and spinal surgery applications. The core challenge was that PEEK — a high-performance polymer widely used in medical implants for its bone-like stiffness — requires processing temperatures far beyond the capability of off-the-shelf desktop printers. Starting from hardware modification, the project progressed through systematic process optimization, thermal behavior analysis, surface bioactivity enhancement, and load-bearing validation, ultimately producing functional spinal fusion cages and femur models that withstood clinical-level compression forces without fracture.",
+        },
+        {
+          type: "text",
+          content:
+            "The research spanned the full development arc of a custom FDM system for PEEK, and ownership was held across hardware, process, materials, and analysis. The printer was built from an open-source Delta architecture, with the nozzle heating system upgraded to reach 380–400°C (versus a standard ceiling of ~250°C), and the heat bed rebuilt with aluminum and 300W elements to sustain 140–160°C — a critical range for maintaining crystallization conditions near PEEK's glass transition temperature. To navigate the enormous parameter space without exhaustive testing, a Taguchi L18 orthogonal array was applied, condensing 4,374 possible combinations into 18 structured experiments. ANOVA and signal-to-noise ratio analysis then identified infill density as the dominant factor (contributing ~40% to mechanical performance), followed by infill angle and nozzle temperature.\n\nA FLIR thermal imager was used to capture real-time thermal history during printing, revealing that the repeated heating-and-cooling cycles caused by nozzle traversal created unpredictable crystallinity gradients — insight that directly motivated the design of a post-print annealing protocol (ramping from 150°C to 200°C over ~10 hours) to stabilize and homogenize crystal structure. For surface bioactivity, a custom cold-spray module was designed and integrated to deposit hydroxyapatite (HA) powder onto printed surfaces without thermal degradation. Testing across different surface porosities revealed that HA adhesion was only effective on structured porous surfaces (~23% coverage at 30% porosity versus ~3% on smooth geometry), establishing a clear design guideline for future implant geometry. The finalized workflow produced implants that survived 2300N compressive loads with only 0.845mm displacement and no structural failure.",
+        },
+        {
+          type: "text",
+          content:
+            "The thesis was recognized at two international and national conferences. The 2019 paper on customized PEEK implants with surface modification received the Best Paper 2nd Place Award at the ASME 13th International Conference on Micro and Nano Systems, while the 2018 process optimization study earned 3rd Place at the 35th Chinese Society of Mechanical Engineers Annual Conference.",
+        },
+      ],
+      gallery: [],
+      links: [
+        {
+          label: "ASME Paper",
+          href: "https://asmedigitalcollection.asme.org/IDETC-CIE/proceedings-abstract/IDETC-CIE2019/59223/V004T08A013/1069946",
+        },
+      ],
     },
   },
 ];
