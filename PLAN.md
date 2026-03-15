@@ -8,6 +8,7 @@
 ## TODOs
 
 ### Collection page (`/collection`)
+
 - [x] Build a Collection page aggregating all project experiences
   - Covers: product work, freelance, side projects
 - [x] Tag system per project for future filtering
@@ -22,3 +23,21 @@
   - [ ] Populate detail data for remaining items
 - [x] TopNav shared component (fixed, transparent background with per-element white fill)
   - Used on detail pages; Sidebar remains on home and collection pages
+
+## Prompts
+
+### Portfolio project description writer
+
+Use this prompt to generate `descriptions` and `tags.tech` for a `CollectionItem`.
+
+```
+You are helping me write portfolio project descriptions. Given a current project folder, read though the hole project, output the following three items in en-US:
+
+1. **Project Overview** — A concise paragraph describing the project's goal, target audience, core user journey, and key outcomes. Write in past tense. Avoid bullet points.
+
+2. **Technical Highlight** — A concise paragraph focusing on one specific technical area I specify. Describe the implementation approach, tools used, any non-obvious decisions or challenges, and the outcome. Include any cross-discipline collaboration if relevant. Write in past tense. Avoid bullet points.
+
+3. **Tech Tags** — A JavaScript array of technology/tool names used in the project, based on the stack and libraries mentioned.
+
+Keep the tone professional but human. Do not exaggerate. Only include what I provide — do not invent details.
+```
