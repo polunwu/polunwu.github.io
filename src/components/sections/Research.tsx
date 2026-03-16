@@ -22,12 +22,12 @@ export default function Research() {
         <h2 className="text-xs uppercase tracking-widest text-[var(--muted)] mb-12">
           Research
         </h2>
-        <div className="space-y-8">
+        <div className="flex flex-col gap-12">
           {papers.map((paper) => (
             <a
               key={paper.title}
               href={paper.href}
-              className="grid md:grid-cols-3 gap-8 -mx-2 px-2 py-2 -my-2 hover:bg-[var(--border)]/20 transition-colors duration-200 group"
+              className="grid md:grid-cols-3 gap-4 md:gap-8 -mx-2 px-2 py-2 -my-2 hover:bg-[var(--border)]/20 transition-colors duration-200 group"
             >
               <div>
                 <p className="text-sm font-medium group-hover:text-[var(--accent)] transition-colors duration-200">{paper.award}</p>
