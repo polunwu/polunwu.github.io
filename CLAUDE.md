@@ -56,6 +56,16 @@ The site will be live at `https://polunwu.github.io`.
 
 > Important: In GitHub repo Settings → Pages, Source must be set to **GitHub Actions** (not "Deploy from a branch"), otherwise GitHub will deploy on any branch push regardless of the workflow.
 
+### Routes
+
+- `/` — main single-page resume (home)
+- `/collection` — masonry grid of portfolio projects, driven by `src/data/collection.ts`
+- `/collection/[slug]` — detail page for each collection item; `generateStaticParams` is required here (and on any future dynamic routes) because the site uses static export
+
+Non-home pages use `TopNav` (fixed header with name, back link, contact links, clock) instead of `Sidebar`.
+
 ### Content Pattern
 
 Section components (`src/components/sections/`) are purely presentational. Content data (experience entries, research items, etc.) is defined as typed arrays at the top of each section file — there is no CMS or external data fetching. To update content, edit the data arrays directly in the relevant section file.
+
+Collection portfolio data lives in `src/data/collection.ts` as a typed `CollectionItem[]` array. Each item has a `slug`, metadata, `tags`, and an optional `detail` object containing `descriptions` (typed content blocks: `heading`, `text`, `code`), `gallery` items, and `links`. Media assets are stored under `public/images/[project-slug]/` and referenced by relative path (e.g., `"images/giloo-platform/cover.mp4"`).
