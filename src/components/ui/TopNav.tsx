@@ -8,9 +8,9 @@ const contactLinks = [
 
 export default function TopNav() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 px-4 md:px-6 py-5 md:py-6 flex justify-between items-center">
-      {/* Left: name + back link (mobile stacked) */}
-      <div className="flex flex-col gap-3 bg-[var(--background)] px-1">
+    <header className="fixed top-0 left-0 right-0 z-10 px-4 md:px-6 py-5 md:py-6 flex justify-between items-center bg-[var(--background)] md:bg-transparent">
+      {/* Left: name */}
+      <div className="flex flex-col gap-3 md:flex-row bg-[var(--background)] px-1">
         <a
           href="/"
           className="font-[family-name:var(--font-cormorant)] text-xl font-semibold leading-tight whitespace-nowrap"
@@ -18,15 +18,15 @@ export default function TopNav() {
         >
           Polun Wu
         </a>
+      </div>
+      {/* Right: back link (mobile) + contact links (desktop) + clock */}
+      <div className="flex items-center gap-4 md:gap-8">
         <a
           href="/collection"
-          className="md:hidden text-sm uppercase tracking-widest text-[var(--muted)] hover:text-[var(--foreground)] transition-colors py-1 -my-1"
+          className="md:hidden text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
         >
           ← Collection
         </a>
-      </div>
-      {/* Right: contact links (desktop) + clock */}
-      <div className="flex items-center gap-8">
         <div className="hidden md:flex items-center gap-4 bg-[var(--background)] px-1">
           {contactLinks.map((link) => (
             <a
