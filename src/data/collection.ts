@@ -74,18 +74,17 @@ export const collection: CollectionItem[] = [
     },
     detail: {
       projectName: "Giloo Streaming Platform",
-      role: "Software Engineer (Frontend)",
-      collaboration:
-        "Built at Giloo in collaboration with Backend Engineers, Product Managers, and Designers",
+      role: "Software Engineer",
+      collaboration: "Built at Giloo with team members",
       descriptions: [
         {
           type: "text",
           content:
-            "Giloo is a documentary streaming and crowdfunding platform serving primarily Taiwanese audiences, with a growing international presence. As a Software Engineer on the frontend team over 4.5 years — working closely with backend engineers, product managers, and designers — contributions spanned continuous feature delivery on a live product serving 100K+ monthly active users: from search and notes to payment flows, NFT collections, donation, and public screening. The platform underwent several architectural milestones including a Cookie-based authentication migration, a centralized API factory rollout across all modules, and a full internationalization initiative covering 20+ modules. In 2025, the frontend was rebuilt from the ground up on Next.js 15 (App Router) with React 19 and TypeScript, re-implementing the core product on a new stack with Docker, Kubernetes, and a GitLab CI pipeline.",
+            "Giloo is a documentary streaming and crowdfunding platform serving primarily Taiwanese audiences, with a growing international presence. As a Software Engineer over 4.5 years — working closely with team members — contributions spanned continuous feature delivery on a live product serving 100K+ monthly active users: from search and notes to payment flows, NFT collections, donation, and public screening. The platform underwent several architectural milestones including a Cookie-based authentication migration, a centralized API factory rollout across all modules, and a full internationalization initiative covering 20+ modules. In 2025, the frontend was rebuilt from the ground up on Next.js 15 (App Router) with React 19 and TypeScript, re-implementing the core product on a new stack with Docker, Kubernetes, and a GitLab CI pipeline.",
         },
         {
           type: "heading",
-          content: "Internationalization Architecture",
+          content: "Internationalization",
         },
         {
           type: "text",
@@ -108,7 +107,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "The Bitmovin player underwent a full UI reconstruction to replace the default control layer with a custom-built interface — including a redesigned seek bar, custom playback controls, a buffering animation, and DRM integration for protected content. The work required operating within Bitmovin's plugin and event API: intercepting player lifecycle events and keeping the custom UI state synchronized with the underlying player without interfering with the SDK's internal behavior. Later iterations added subtitle experience improvements, a report button embedded in the player UI, and region-based playback restriction enforcement applied across cards, search results, and category pages.",
+            "Led the Bitmovin player upgrade from end to end — beginning with a research phase evaluating options against the constraints of the existing legacy implementation, followed by a POC proposal and risk analysis presented to the team, and task planning before execution. The previous player layer had accumulated workarounds that made it increasingly difficult to maintain or extend. The reconstruction replaced the default control layer with a fully custom-built interface, resolving the legacy maintainability issues at the root. The new implementation included a redesigned seek bar, custom playback controls, a buffering animation, and DRM integration for protected content — all operating within Bitmovin's plugin and event API, with custom UI state kept in sync with the underlying player lifecycle. Later iterations added subtitle experience improvements, a report button embedded in the player UI, and region-based playback restriction enforcement.",
         },
         {
           type: "heading",
@@ -121,12 +120,12 @@ export const collection: CollectionItem[] = [
         },
         {
           type: "heading",
-          content: "Multi-Currency & Checkout",
+          content: "Multi-Currency & Checkout Flow",
         },
         {
           type: "text",
           content:
-            "The new platform introduced currency as a first-class UI concern, backed by a dedicated CurrencySlice in the Zustand store with persistence and SSR hydration to prevent currency flicker on page load. The currency switcher propagates selection across product cards, checkout, and billing pages. The checkout flow supported both one-time and subscription purchase paths, with a payment method selector and an invoice carrier validation step covering phone barcode and unified business number formats. Account billing management was built as a multi-step dialog flow handling subscription cancellation and restoration with intermediate confirmation states.",
+            "The new platform introduced currency as a first-class UI concern, backed by a dedicated CurrencySlice in the Zustand store with persistence and SSR hydration to prevent currency flicker on page load. The currency switcher propagates selection across product cards, checkout, and billing pages. The checkout flow supported both one-time and subscription purchase paths, with a payment method selector and an invoice carrier validation step covering phone barcode and unified business number formats. Account billing management was built as a multi-step dialog flow handling subscription cancellation and restoration with intermediate confirmation states.\n\nPrior to implementation, the existing payment flows across the Nuxt platform were audited and documented — producing flowcharts and scope definitions to support early-stage planning for the migration. This work was shared with the product manager and designer to help evaluate what to carry over, what to simplify, and where the new system could make different product decisions, directly informing the design direction of the new checkout system.",
         },
         {
           type: "heading",
@@ -154,6 +153,15 @@ export const collection: CollectionItem[] = [
           type: "text",
           content:
             "Testing infrastructure was established and maintained across both codebases. In the Nuxt era, Storybook was introduced to create a component documentation and visual testing environment, enabling isolated development and review of UI components independent of page context. Cypress E2E tests were maintained and upgraded from v10 to v12, modernizing the test infrastructure for core user flows. In the Next.js rebuild, unit tests were written alongside new features, establishing a testing baseline for the new codebase.",
+        },
+        {
+          type: "heading",
+          content: "Team & Documentation",
+        },
+        {
+          type: "text",
+          content:
+            "Beyond feature work, contributed to team infrastructure — designing the frontend engineer interview process and question set, building an interview tracking board, and drafting the onboarding flow for new engineers. Wrote and maintained internal documentation covering the sprint workflow, code review process and guidelines, i18n translation workflow, and the web deployment process, giving new team members a clear reference for day-to-day engineering practices.",
         },
       ],
       gallery: [],
