@@ -14,7 +14,9 @@
 - [x] Tag system per project for future filtering
   - Multi-dimensional tags: type (product / project / side-project / research), tech stack, domain
 - [ ] Visual relationship map across projects — Obsidian-style force graph
-  - Not planned for implementation yet
+  - Plan: derive nodes/edges from existing `collection.ts` tag data
+  - Consider: D3.js or react-force-graph for rendering
+  - Consider: standalone page or embedded in `/collection`
 - [x] Collection detail page per item (`/collection/[slug]`)
   - [x] Extend `CollectionItem` type with detail fields (projectName, role, collaboration, descriptions, gallery, links)
   - [x] descriptions supports `heading`, `text`, and `code` block union types
@@ -28,6 +30,14 @@
   - [ ] Populate detail data for `portfolio-site` (pending — fill in when site is more complete)
 - [x] TopNav shared component (fixed, transparent background with per-element white fill)
   - Used on detail pages; Sidebar remains on home and collection pages
+
+### CV
+
+- [ ] Add a CV link that opens a PDF version of the CV
+
+### About / Bio
+
+- [ ] Rewrite About description to better reflect current direction, personality, and cross-domain background
 
 ### Experience & Research sections
 

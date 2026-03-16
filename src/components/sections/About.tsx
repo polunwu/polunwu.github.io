@@ -7,9 +7,9 @@ export default function About() {
       </h2>
       <div className="space-y-4 text-sm text-[var(--muted)] leading-relaxed max-w-lg">
         <p>
-          吳柏論 Polun Wu is a Taiwanese Software Engineer, self-driven and a
-          problem-solver at heart, who builds to make things real. Curious about
-          what&apos;s next.
+          吳柏論 Polun Wu is a Taiwanese Software Engineer, a problem-solver at
+          heart, who builds to make things real. He is self-driven, creative
+          person and curious about what&apos;s next.
         </p>
         <p>
           His path spans mechanical engineering research in precision 3D
