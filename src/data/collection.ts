@@ -165,7 +165,10 @@ export const collection: CollectionItem[] = [
         },
       ],
       gallery: [],
-      links: [],
+      links: [
+        { label: "Giloo", href: "https://giloo.ist/" },
+        { label: "Giloo Labs", href: "https://labs.giloo.ist/" },
+      ],
     },
   },
   {
@@ -250,7 +253,12 @@ export const collection: CollectionItem[] = [
             "Led the Material-UI upgrade across three major versions (v5 → v6 → v7), handling breaking changes and deprecated API migrations at each stage, including a systematic migration from system props to sx props, Grid to Grid2, and LoadingButton integration. The MUI color palette was extended with custom brand colors to align the component library with Giloo's design system.",
         },
       ],
-      gallery: [],
+      gallery: [
+        { src: "images/giloo-creator-platform/gallery/1.png", type: "image" },
+        { src: "images/giloo-creator-platform/gallery/2.png", type: "image" },
+        { src: "images/giloo-creator-platform/gallery/3.png", type: "image" },
+        { src: "images/giloo-creator-platform/gallery/4.png", type: "image" },
+      ],
       links: [],
     },
   },
