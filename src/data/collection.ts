@@ -47,7 +47,7 @@ export const collection: CollectionItem[] = [
         "Next.js",
         "React",
         "TypeScript",
-        "Nuxt.js",
+        "Nuxt",
         "Vue.js",
         "Tailwind CSS",
         "TanStack Query",
@@ -80,7 +80,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "Giloo is a documentary streaming and crowdfunding platform serving primarily Taiwanese audiences, with a growing international presence. As a Software Engineer over 4.5 years — working closely with team members — contributions spanned continuous feature delivery on a live product serving 100K+ monthly active users: from search and notes to payment flows, NFT collections, donation, and public screening. The platform underwent several architectural milestones including a Cookie-based authentication migration, a centralized API factory rollout across all modules, and a full internationalization initiative covering 20+ modules. In 2025, the frontend was rebuilt from the ground up on Next.js 15 (App Router) with React 19 and TypeScript, re-implementing the core product on a new stack with Docker, Kubernetes, and a GitLab CI pipeline.",
+            "Giloo is a documentary streaming and crowdfunding platform serving primarily Taiwanese audiences, with a growing international presence. As a Software Engineer over 4.5 years, I work closely with team members, contributions spanned continuous feature delivery on a live product serving 100K+ monthly active users: from search and notes to payment flows, NFT collections, donation, and public screening. The platform underwent several architectural milestones including a Cookie-based authentication migration, a centralized API factory rollout across all modules, and a full internationalization initiative covering 20+ modules. In 2025, the frontend was rebuilt from the ground up on Next.js 15 (App Router) with React 19 and TypeScript, re-implementing the core product on a new stack with Docker, Kubernetes, and a GitLab CI pipeline.",
         },
         {
           type: "heading",
@@ -107,7 +107,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "Led the Bitmovin player upgrade from end to end — beginning with a research phase evaluating options against the constraints of the existing legacy implementation, followed by a POC proposal and risk analysis presented to the team, and task planning before execution. The previous player layer had accumulated workarounds that made it increasingly difficult to maintain or extend. The reconstruction replaced the default control layer with a fully custom-built interface, resolving the legacy maintainability issues at the root. The new implementation included a redesigned seek bar, custom playback controls, a buffering animation, and DRM integration for protected content — all operating within Bitmovin's plugin and event API, with custom UI state kept in sync with the underlying player lifecycle. Later iterations added subtitle experience improvements, a report button embedded in the player UI, and region-based playback restriction enforcement.",
+            "Led the video player upgrade from end to end — beginning with a research phase evaluating options against the constraints of the existing legacy implementation, followed by a POC proposal and risks presented to the team, and task planning before execution. The previous player layer had accumulated workarounds that made it increasingly difficult to maintain or extend. The reconstruction replaced the default control layer with a fully custom-built interface, resolving the legacy maintainability issues at the root. The new implementation included a redesigned seek bar, custom playback controls, a buffering animation, and DRM integration for protected content — all operating within Bitmovin's plugin and event API, with custom UI state kept in sync with the underlying player lifecycle. Later iterations added subtitle experience improvements, a report button embedded in the player UI, and region-based playback restriction enforcement.",
         },
         {
           type: "heading",
@@ -193,7 +193,7 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-square",
     tags: {
       type: "project",
-      tech: ["Nuxt.js", "Vue.js", "A-Frame", "glTF / GLB", "GSAP", "WebAR"],
+      tech: ["Nuxt", "Vue.js", "A-Frame", "glTF / GLB", "GSAP", "WebAR"],
       domain: ["creative", "interactive", "polish"],
       capabilities: [
         "cross-discipline collaboration",
