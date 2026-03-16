@@ -164,7 +164,14 @@ export const collection: CollectionItem[] = [
             "Beyond feature work, contributed to team infrastructure as well: designing the frontend engineer interview process and question set, building an interview tracking board, and drafting the onboarding flow for new engineers. Wrote and maintained internal documentation covering the sprint workflow, code review process and guidelines, i18n translation workflow, and the web deployment process, giving new team members a clear reference for day-to-day engineering practices.",
         },
       ],
-      gallery: [],
+      gallery: [
+        { src: "images/giloo-platform/gallery/1.png", type: "image" },
+        { src: "images/giloo-platform/gallery/2.png", type: "image" },
+        { src: "images/giloo-platform/gallery/3.png", type: "image" },
+        { src: "images/giloo-platform/gallery/4.png", type: "image" },
+        { src: "images/giloo-platform/gallery/5.png", type: "image" },
+        { src: "images/giloo-platform/gallery/6.png", type: "image" },
+      ],
       links: [
         { label: "Giloo", href: "https://giloo.ist/" },
         { label: "Giloo Labs", href: "https://labs.giloo.ist/" },
@@ -260,7 +267,7 @@ export const collection: CollectionItem[] = [
         { src: "images/giloo-creator-platform/gallery/4.png", type: "image" },
       ],
       links: [
-        { label: "Giloo Creator Platform", href: "https://joinus.giloo.ist/creators" },
+        { label: "Giloo Creator", href: "https://joinus.giloo.ist/creators" },
       ],
     },
   },
