@@ -179,8 +179,81 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-square",
     tags: {
       type: "product",
-      tech: ["React", "TypeScript", "Redux Toolkit Query", "Material UI"],
+      tech: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Redux Toolkit",
+        "RTK Query",
+        "Material UI",
+        "Zod",
+        "react-hook-form",
+        "Tus Protocol",
+        "next-i18next",
+        "Tiptap",
+        "Cropper.js",
+        "Docker",
+        "Kubernetes",
+        "GitLab CI",
+        "Google Analytics 4",
+      ],
       domain: ["streaming", "creator-tools", "giloo"],
+      capabilities: [
+        "Multi-step workflow design",
+        "AI feature integration",
+        "API layer architecture",
+        "Framework migration management",
+      ],
+    },
+    detail: {
+      projectName: "Giloo Creator Platform",
+      role: "Software Engineer",
+      collaboration: "Built at Giloo with team members",
+      descriptions: [
+        {
+          type: "text",
+          content:
+            "Giloo Creator Platform is a back-office content management system built for Giloo's content partner network, used by filmmakers, distributors, and rights holders to upload and manage video content, configure metadata and subtitles, and track revenue. As a Software Engineer over 4+ years, contributions spanned the system from project setup and engineering tooling (linting, testing workflows) to core editorial workflows, financial management features, and AI-powered features. The platform supported three languages and integrated with multiple video hosting services for resumable uploads.",
+        },
+        {
+          type: "heading",
+          content: "Video Upload Workflow",
+        },
+        {
+          type: "text",
+          content:
+            "The core of the platform was an 11-step video editing workflow covering basic info, cover images, cast and crew, main video upload, trailers, subtitles, stills, awards, licensing, purchase status, and publishing settings. Each step had independent form validation built on Zod and react-hook-form, with per-language field validation handled by a centralized validation engine. Video uploads used the Tus resumable upload protocol, integrated with both Vimeo and an internal video service, supporting large file uploads with automatic resume on connection failure.",
+        },
+        {
+          type: "heading",
+          content: "AI Features",
+        },
+        {
+          type: "text",
+          content:
+            "Two AI features were built into the platform. The first was a task-oriented AI autofill chatroom where users could trigger translation, tag generation, and tone initialization tasks, with Redux managing the full task lifecycle from creation through completion or error. The interface included real-time typing animation, auto-scroll, and error handling. The second was an AI subtitle translation pipeline: a multi-step flow from source subtitle selection through language configuration, preprocessing checks, credit estimation, translation execution, progress tracking, and download. A credits system was integrated to show real-time consumption and balance during the process.",
+        },
+        {
+          type: "heading",
+          content: "API Layer Design",
+        },
+        {
+          type: "text",
+          content:
+            "The data layer was built on Redux Toolkit Query with a custom baseQueryWithAuth handling authentication centrally: Cookie token injection, org_id header propagation, and automatic 401 logout. API services were organized by domain using the injectEndpoints pattern (episodes, films, people, subtitles, events, etc.), and cache invalidation was managed through a typed cache tag system for precise, per-entity updates rather than broad invalidation.",
+        },
+        {
+          type: "heading",
+          content: "UI Framework Migration",
+        },
+        {
+          type: "text",
+          content:
+            "Led the Material-UI upgrade across three major versions (v5 → v6 → v7), handling breaking changes and deprecated API migrations at each stage, including a systematic migration from system props to sx props, Grid to Grid2, and LoadingButton integration. The MUI color palette was extended with custom brand colors to align the component library with Giloo's design system.",
+        },
+      ],
+      gallery: [],
+      links: [],
     },
   },
   {
