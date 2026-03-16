@@ -10,7 +10,7 @@ const experiences = [
       "Introduced Cypress E2E testing covering 90+ complex data ↔ user scenarios",
       "Built a content-creator system supporting video uploads, customizable content, and revenue management",
       "Implemented internationalization with multi-language and multi-currency support for Taiwan, Hong Kong, and the U.S.",
-      "Mentored a junior developer and established onboarding workflows, documentation standards, and code review processes",
+      "Mentored a junior engineer and established onboarding workflows, documentation standards, and code review processes",
     ],
   },
   {
