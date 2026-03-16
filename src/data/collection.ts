@@ -259,7 +259,9 @@ export const collection: CollectionItem[] = [
         { src: "images/giloo-creator-platform/gallery/3.png", type: "image" },
         { src: "images/giloo-creator-platform/gallery/4.png", type: "image" },
       ],
-      links: [],
+      links: [
+        { label: "Giloo Creator Platform", href: "https://joinus.giloo.ist/creators" },
+      ],
     },
   },
   {
