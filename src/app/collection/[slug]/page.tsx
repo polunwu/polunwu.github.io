@@ -24,13 +24,13 @@ export default async function CollectionDetailPage({
       <TopNav />
 
       {/* Content */}
-      <div className="grid grid-cols-[160px_1fr] gap-8">
-        <div />
+      <div className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-8">
+        <div className="hidden md:block" />
         <main className="pt-1 pb-32">
-          {/* Back link */}
+          {/* Back link — desktop only (mobile shows in TopNav) */}
           <a
             href="/collection"
-            className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--foreground)] transition-colors mb-12 inline-block"
+            className="hidden md:inline-block text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--foreground)] transition-colors mb-12"
           >
             ← Collection
           </a>

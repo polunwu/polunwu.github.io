@@ -7,7 +7,7 @@ import Education from "@/components/sections/Education";
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-4 md:p-6 grid grid-cols-[160px_1fr] gap-8 relative">
+    <div className="min-h-screen p-4 md:p-6 pt-20 md:pt-6 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-8 relative">
       <Sidebar />
 
       <main className="space-y-16 pt-1 pb-32">
@@ -17,7 +17,7 @@ export default function Home() {
         <Education />
       </main>
 
-      <div className="fixed top-4 right-6 md:top-6 md:right-6">
+      <div className="hidden md:block fixed top-6 right-6">
         <Clock />
       </div>
     </div>
