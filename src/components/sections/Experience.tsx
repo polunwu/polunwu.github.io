@@ -12,7 +12,7 @@ const experiences = [
       { text: "Introduced Cypress E2E testing covering 90+ complex data ↔ user scenarios", href: "/collection/giloo-platform" },
       { text: "Built a content-creator system supporting video uploads, customizable content, and revenue management", href: "/collection/creator-system" },
       { text: "Implemented internationalization with multi-language and multi-currency support for Taiwan, Hong Kong, and the U.S.", href: "/collection/giloo-platform" },
-      { text: "Mentored a junior engineer and established onboarding workflows, documentation standards, and code review processes", href: "/collection/giloo-platform" },
+      { text: "Mentored a new engineer and established onboarding workflows, documentation standards, and code review processes", href: "/collection/giloo-platform" },
     ] as Highlight[],
   },
   {
@@ -23,7 +23,7 @@ const experiences = [
     highlights: [
       { text: "Developed browser-based 3D visualizations and mobile AR interactive experiences", href: "/collection/3d-ar-experiences" },
       { text: "Designed and implemented advanced animations using CSS Animations and GSAP" },
-      { text: "Introduced new web and UI frameworks, contributing to the restructuring of 30+ pages in a network management platform redesign", href: "/collection/network-management-platform" },
+      { text: "Introduced new web and UI frameworks, contributing to the restructuring of 40+ pages in a network management platform redesign", href: "/collection/network-management-platform" },
     ] as Highlight[],
   },
 ];

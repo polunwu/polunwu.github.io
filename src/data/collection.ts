@@ -64,7 +64,7 @@ export const collection: CollectionItem[] = [
         "Kubernetes",
         "GitLab CI",
       ],
-      domain: ["streaming", "media", "giloo"],
+      domain: ["streaming", "media-platform"],
       capabilities: [
         "Platform-scale frontend engineering",
         "Internationalization architecture",
@@ -206,7 +206,7 @@ export const collection: CollectionItem[] = [
         "GitLab CI",
         "Google Analytics 4",
       ],
-      domain: ["streaming", "creator-tools", "giloo"],
+      domain: ["streaming", "creator-tools", "media-platform"],
       capabilities: [
         "AI feature integration",
         "API layer architecture",
@@ -282,7 +282,7 @@ export const collection: CollectionItem[] = [
     tags: {
       type: "project",
       tech: ["Nuxt", "Vue.js", "A-Frame", "glTF / GLB", "GSAP", "WebAR"],
-      domain: ["creative", "interactive", "polish"],
+      domain: ["creative", "interactive", "agency-work"],
       capabilities: [
         "cross-discipline collaboration",
         "constraint-driven design",
@@ -340,7 +340,7 @@ export const collection: CollectionItem[] = [
         "Vue CLI",
         "Jest",
       ],
-      domain: ["network", "enterprise", "polish"],
+      domain: ["network", "enterprise", "agency-work"],
       capabilities: [
         "Legacy system modernization",
         "Scalable component architecture",
@@ -459,7 +459,8 @@ export const collection: CollectionItem[] = [
   },
   {
     slug: "peek-implants",
-    yearStart: 2019,
+    yearStart: 2018,
+    yearEnd: 2019,
     title: "Customized PEEK Implants via 3D Printing",
     description:
       "Research on microporous surface modification for medical implants using precision 3D printing.",
