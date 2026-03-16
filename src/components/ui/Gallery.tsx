@@ -41,7 +41,7 @@ export default function Gallery({ items }: { items: GalleryMedia[] }) {
         <Dialog.Overlay className="fixed inset-0 bg-black/80 z-50" />
         <Dialog.Content
           className="fixed inset-0 z-50 flex items-center justify-center p-6 outline-none cursor-zoom-out"
-          onPointerDown={(e) => { if (e.target === e.currentTarget) setSelected(null); }}
+          onClick={(e) => { if (e.target === e.currentTarget) setSelected(null); }}
         >
           <Dialog.Title className="sr-only">Image preview</Dialog.Title>
           <Dialog.Close className="absolute top-4 right-6 text-sm text-[var(--foreground)] bg-[var(--background)] px-2 py-1 hover:opacity-60 transition-opacity cursor-pointer">
