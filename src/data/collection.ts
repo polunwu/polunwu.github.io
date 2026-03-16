@@ -98,7 +98,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "The notes system was built in two distinct phases. The initial implementation introduced note creation with privacy controls, tag filtering, and a card component integrated into the video page. The more significant architectural change came when notes were decoupled from their episode bindings — enabling an independent note feed, a standalone note form, and a modal-based detail view that could surface across multiple product contexts. This unbinding required rethinking the data model, state management, and rendering strategy for a feature that had previously only existed in the context of a single video.",
+            "The notes system was built in two distinct phases. The initial implementation introduced note creation with privacy controls, tag filtering, and a card component integrated into the video page. The more significant architectural change came when notes were decoupled from their episode bindings, which enabled an independent note feed, a standalone note form, and a modal-based detail view that could surface across multiple product contexts. This unbinding required rethinking the data model, state management, and rendering strategy for a feature that had previously only existed in the context of a single video.",
         },
         {
           type: "heading",
@@ -107,7 +107,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "Led the video player upgrade from end to end — beginning with a research phase evaluating options against the constraints of the existing legacy implementation, followed by a POC proposal and risks presented to the team, and task planning before execution. The previous player layer had accumulated workarounds that made it increasingly difficult to maintain or extend. The reconstruction replaced the default control layer with a fully custom-built interface, resolving the legacy maintainability issues at the root. The new implementation included a redesigned seek bar, custom playback controls, a buffering animation, and DRM integration for protected content — all operating within Bitmovin's plugin and event API, with custom UI state kept in sync with the underlying player lifecycle. Later iterations added subtitle experience improvements, a report button embedded in the player UI, and region-based playback restriction enforcement.",
+            "Led the video player upgrade from end to end, starting with a research phase evaluating options against the constraints of the existing legacy implementation, followed by a POC proposal and risk assessment presented to the team, and task planning before execution. The previous player layer had accumulated workarounds that made it increasingly difficult to maintain or extend. The reconstruction replaced the default control layer with a fully custom-built interface, resolving the legacy maintainability issues at the root. The new implementation included a redesigned seek bar, custom playback controls, a buffering animation, and DRM integration for protected content, all operating within Bitmovin's plugin and event API with custom UI state kept in sync with the underlying player lifecycle. Later iterations added subtitle experience improvements, a report button embedded in the player UI, and region-based playback restriction enforcement.",
         },
         {
           type: "heading",
@@ -116,7 +116,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "The Next.js 15 rebuild migrated the platform off Nuxt 2 (which had reached end-of-life) and established a foundation for the platform's next phase. The core architectural decision was a server/client isomorphic API pattern: Server Components use native fetch with Next.js per-call cache strategies, while client-side data fetching uses ky + React Query — with a unified API class that automatically detects execution environment and selects the appropriate HTTP client, along with centralized 401 interception and auth token cookie management. State management was rebuilt on Zustand with a bounded store and slice pattern, with selective localStorage persistence and SSR hydration synchronization to prevent client/server state mismatch. The deployment stack was established with Docker multi-stage builds, Kubernetes manifests, and a GitLab CI pipeline across dev, staging, and production environments.",
+            "The Next.js 15 rebuild migrated the platform off Nuxt 2 (which had reached end-of-life) and established a foundation for the platform's next phase. The core architectural decision was a server/client isomorphic API pattern: Server Components use native fetch with Next.js per-call cache strategies, while client-side data fetching uses ky + React Query, routed through a unified API class that automatically detects execution environment and selects the appropriate HTTP client, with centralized 401 interception and auth token cookie management. State management was rebuilt on Zustand with a bounded store and slice pattern, with selective localStorage persistence and SSR hydration synchronization to prevent client/server state mismatch. The deployment stack was established with Docker multi-stage builds, Kubernetes manifests, and a GitLab CI pipeline across dev, staging, and production environments.",
         },
         {
           type: "heading",
@@ -125,7 +125,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "The new platform introduced currency as a first-class UI concern, backed by a dedicated CurrencySlice in the Zustand store with persistence and SSR hydration to prevent currency flicker on page load. The currency switcher propagates selection across product cards, checkout, and billing pages. The checkout flow supported both one-time and subscription purchase paths, with a payment method selector and an invoice carrier validation step covering phone barcode and unified business number formats. Account billing management was built as a multi-step dialog flow handling subscription cancellation and restoration with intermediate confirmation states.\n\nPrior to implementation, the existing payment flows across the Nuxt platform were audited and documented — producing flowcharts and scope definitions to support early-stage planning for the migration. This work was shared with the product manager and designer to help evaluate what to carry over, what to simplify, and where the new system could make different product decisions, directly informing the design direction of the new checkout system.",
+            "The new platform introduced currency as a first-class UI concern, backed by a dedicated CurrencySlice in the Zustand store with persistence and SSR hydration to prevent currency flicker on page load. The currency switcher propagates selection across product cards, checkout, and billing pages. The checkout flow supported both one-time and subscription purchase paths, with a payment method selector and an invoice carrier validation step covering phone barcode and unified business number formats. Account billing management was built as a multi-step dialog flow handling subscription cancellation and restoration with intermediate confirmation states.\n\nPrior to implementation, the existing payment flows across the Nuxt platform were audited and documented, producing flowcharts and scope definitions to support early-stage planning for the migration. This work was shared with the product manager and designer to help evaluate what to carry over, what to simplify, and where the new system could make different product decisions, directly informing the design direction of the new checkout system.",
         },
         {
           type: "heading",
@@ -143,7 +143,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "In the Nuxt codebase, page-level caching was a key constraint when rolling out internationalization — locale switching had to coexist with existing cache strategies without causing stale or mismatched content to be served. In the Next.js rebuild, caching was designed per-call at the data layer: each API request in Server Components specifies its own Next.js cache strategy (force-cache, no-store, or revalidate interval), enabling static-like performance for stable content such as category listings while ensuring user-specific or time-sensitive data is always fetched fresh.",
+            "In the Nuxt codebase, page-level caching was a key constraint when rolling out internationalization. Locale switching had to coexist with existing cache strategies without causing stale or mismatched content to be served. In the Next.js rebuild, caching was designed per-call at the data layer: each API request in Server Components specifies its own Next.js cache strategy (force-cache, no-store, or revalidate interval), enabling static-like performance for stable content such as category listings while ensuring user-specific or time-sensitive data is always fetched fresh.",
         },
         {
           type: "heading",
@@ -161,7 +161,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "Beyond feature work, contributed to team infrastructure — designing the frontend engineer interview process and question set, building an interview tracking board, and drafting the onboarding flow for new engineers. Wrote and maintained internal documentation covering the sprint workflow, code review process and guidelines, i18n translation workflow, and the web deployment process, giving new team members a clear reference for day-to-day engineering practices.",
+            "Beyond feature work, contributed to team infrastructure as well: designing the frontend engineer interview process and question set, building an interview tracking board, and drafting the onboarding flow for new engineers. Wrote and maintained internal documentation covering the sprint workflow, code review process and guidelines, i18n translation workflow, and the web deployment process, giving new team members a clear reference for day-to-day engineering practices.",
         },
       ],
       gallery: [],
