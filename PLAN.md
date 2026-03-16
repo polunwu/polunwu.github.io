@@ -36,6 +36,20 @@
 - [x] Research papers link to `/collection/peek-implants`
   - Hover effect: award text turns accent blue; card bg tint on hover
 
+### RWD (Mobile)
+
+Design principle:
+- **Desktop**: keep existing two-column layout (Sidebar left + main content right)
+- **Mobile**: Sidebar collapses into a fixed top header bar (name left, nav links right); main content full-width
+- Mobile Sidebar header should visually match TopNav style for consistency
+
+- [ ] **Sidebar** — convert to fixed top header on mobile (name left, nav links right)
+- [ ] **Home page** — grid to `grid-cols-1 md:grid-cols-[160px_1fr]`; single column on mobile
+- [ ] **Collection page** — same grid fix; cards `columns-1 sm:columns-2 md:columns-3`
+- [ ] **Collection detail page** — hide 160px spacer on mobile; verify TopNav nav links don't overflow
+- [ ] **Sections** — verify Experience / Research / Education spacing on mobile
+- [ ] **Clock** — verify no overlap with Sidebar header on mobile
+
 ## Prompts
 
 ### Portfolio project description writer
