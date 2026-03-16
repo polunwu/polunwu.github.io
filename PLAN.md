@@ -15,14 +15,26 @@
   - Multi-dimensional tags: type (product / project / side-project / research), tech stack, domain
 - [ ] Visual relationship map across projects — Obsidian-style force graph
   - Not planned for implementation yet
-- [ ] Collection detail page per item (`/collection/[slug]`)
+- [x] Collection detail page per item (`/collection/[slug]`)
   - [x] Extend `CollectionItem` type with detail fields (projectName, role, collaboration, descriptions, gallery, links)
-  - [x] descriptions supports `text` and `code` block union types
+  - [x] descriptions supports `heading`, `text`, and `code` block union types
   - [x] Implement detail page layout with TopNav, metadata, descriptions, tech tags, links, gallery
   - [x] Populate detail data for `3d-ar-experiences` (FDPG 2021)
-  - [ ] Populate detail data for remaining items
+  - [x] Populate detail data for `network-management-platform` (PIXIS)
+  - [x] Populate detail data for `wassup-shopping`
+  - [x] Populate detail data for `peek-implants`
+  - [x] Populate detail data for `giloo-platform`
+  - [x] Populate detail data for `creator-system`
+  - [ ] Populate detail data for `portfolio-site` (pending — fill in when site is more complete)
 - [x] TopNav shared component (fixed, transparent background with per-element white fill)
   - Used on detail pages; Sidebar remains on home and collection pages
+
+### Experience & Research sections
+
+- [x] Experience highlights link to corresponding collection detail pages
+  - Hover effect: subtle bg tint + underline; company name turns accent blue on hover
+- [x] Research papers link to `/collection/peek-implants`
+  - Hover effect: award text turns accent blue; card bg tint on hover
 
 ## Prompts
 
@@ -35,7 +47,7 @@ You are helping me write portfolio project descriptions. Given a current project
 
 1. **Project Overview** — A concise paragraph describing the project's goal, target audience, core user journey, and key outcomes. Write in past tense. Avoid bullet points.
 
-2. **Technical Highlight** — A concise paragraph focusing on one specific technical area I specify. Describe the implementation approach, tools used, any non-obvious decisions or challenges, and the outcome. Include any cross-discipline collaboration if relevant. Write in past tense. Avoid bullet points.
+2. **Technical Highlights** — One or more concise paragraphs, each focusing on a specific technical area. Use a heading block before each highlight. Describe the implementation approach, tools used, any non-obvious decisions or challenges, and the outcome. Include any cross-discipline collaboration if relevant. Write in past tense. Avoid bullet points.
 
 3. **Tech Tags** — A JavaScript array of technology/tool names used in the project, based on the stack and libraries mentioned.
 
