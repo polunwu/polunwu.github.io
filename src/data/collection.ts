@@ -191,7 +191,6 @@ export const collection: CollectionItem[] = [
         "Tus Protocol",
         "next-i18next",
         "Tiptap",
-        "Cropper.js",
         "Docker",
         "Kubernetes",
         "GitLab CI",
@@ -199,7 +198,6 @@ export const collection: CollectionItem[] = [
       ],
       domain: ["streaming", "creator-tools", "giloo"],
       capabilities: [
-        "Multi-step workflow design",
         "AI feature integration",
         "API layer architecture",
         "Framework migration management",
@@ -213,7 +211,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "Giloo Creator Platform is a back-office content management system built for Giloo's content partner network, used by filmmakers, distributors, and rights holders to upload and manage video content, configure metadata and subtitles, and track revenue. As a Software Engineer over 4+ years, contributions spanned the system from project setup and engineering tooling (linting, testing workflows) to core editorial workflows, financial management features, and AI-powered features. The platform supported three languages and integrated with multiple video hosting services for resumable uploads.",
+            "Giloo Creator Platform is a back-office content management system built for Giloo's content creator network, used by filmmakers, distributors, and rights holders to upload and manage video content, configure metadata and subtitles, and track revenue. As a Software Engineer over 4.5 years, contributions spanned the system from project setup and engineering tooling (linting, testing workflows) to core editorial workflows, financial management features, and AI-powered features. The platform supported three languages and integrated with multiple video hosting services for resumable uploads.",
         },
         {
           type: "heading",
@@ -222,7 +220,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "The core of the platform was an 11-step video editing workflow covering basic info, cover images, cast and crew, main video upload, trailers, subtitles, stills, awards, licensing, purchase status, and publishing settings. Each step had independent form validation built on Zod and react-hook-form, with per-language field validation handled by a centralized validation engine. Video uploads used the Tus resumable upload protocol, integrated with both Vimeo and an internal video service, supporting large file uploads with automatic resume on connection failure.",
+            "The core of the platform was an video editing workflow covering basic info, cover images, cast and crew, main video upload, trailers, subtitles, stills, awards, licensing, purchase status, and publishing settings. Each step had independent form validation built on Zod and react-hook-form, with per-language field validation handled by a centralized validation engine. Video uploads used the Tus resumable upload protocol, integrated with both Vimeo and an internal video service, supporting large file uploads with automatic resume on connection failure.",
         },
         {
           type: "heading",
@@ -240,7 +238,7 @@ export const collection: CollectionItem[] = [
         {
           type: "text",
           content:
-            "The data layer was built on Redux Toolkit Query with a custom baseQueryWithAuth handling authentication centrally: Cookie token injection, org_id header propagation, and automatic 401 logout. API services were organized by domain using the injectEndpoints pattern (episodes, films, people, subtitles, events, etc.), and cache invalidation was managed through a typed cache tag system for precise, per-entity updates rather than broad invalidation.",
+            "The data layer was built on Redux Toolkit Query with a custom baseQueryWithAuth handling authentication centrally: Cookie token injection, header propagation, and automatic 401 logout. API services were organized by domain using the injectEndpoints pattern (episodes, films, people, subtitles, events, etc.), and cache invalidation was managed through a typed cache tag system for precise, per-entity updates rather than broad invalidation.",
         },
         {
           type: "heading",
