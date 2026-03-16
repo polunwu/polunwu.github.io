@@ -30,7 +30,7 @@ export default function Research() {
               className="grid md:grid-cols-3 gap-8 -mx-2 px-2 py-2 -my-2 hover:bg-[var(--border)]/20 transition-colors duration-200 group"
             >
               <div>
-                <p className="text-sm font-medium group-hover:text-[var(--foreground)] transition-colors duration-200">{paper.award}</p>
+                <p className="text-sm font-medium group-hover:text-[var(--accent)] transition-colors duration-200">{paper.award}</p>
                 <p className="text-sm text-[var(--muted)]">{paper.year}</p>
               </div>
               <div className="md:col-span-2">

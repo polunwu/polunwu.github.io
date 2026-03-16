@@ -37,9 +37,9 @@ export default function Experience() {
         </h2>
         <div className="space-y-16">
           {experiences.map((exp) => (
-            <div key={exp.company} className="grid md:grid-cols-3 gap-8">
+            <div key={exp.company} className="grid md:grid-cols-3 gap-8 group">
               <div>
-                <p className="font-medium">{exp.company}</p>
+                <p className="font-medium group-hover:text-[var(--accent)] transition-colors duration-200">{exp.company}</p>
                 <p className="text-sm text-[var(--muted)] mt-1">{exp.role}</p>
                 <p className="text-sm text-[var(--muted)]">{exp.period}</p>
               </div>
@@ -52,7 +52,7 @@ export default function Experience() {
                     {h.href ? (
                       <a
                         href={h.href}
-                        className="block pl-4 py-1 -my-1 underline underline-offset-2 decoration-[var(--border)] hover:text-[var(--foreground)] hover:bg-[var(--border)] hover:decoration-[var(--muted)] transition-colors duration-200"
+                        className="block pl-4 py-1 -my-1 underline underline-offset-2 decoration-[var(--border)] hover:text-[var(--foreground)] hover:bg-[var(--border)]/20 hover:decoration-[var(--muted)] transition-colors duration-200"
                       >
                         {h.text}
                       </a>
