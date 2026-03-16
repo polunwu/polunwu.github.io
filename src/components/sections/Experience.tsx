@@ -47,17 +47,17 @@ export default function Experience() {
                 {exp.highlights.map((h, i) => (
                   <li
                     key={i}
-                    className="text-sm text-[var(--muted)] leading-relaxed pl-4 border-l border-[var(--border)]"
+                    className="text-sm text-[var(--muted)] leading-relaxed border-l border-[var(--border)]"
                   >
                     {h.href ? (
                       <a
                         href={h.href}
-                        className="hover:text-[var(--foreground)] transition-colors duration-200 underline underline-offset-2 decoration-[var(--border)] hover:decoration-[var(--muted)]"
+                        className="block pl-4 py-1 -my-1 underline underline-offset-2 decoration-[var(--border)] hover:text-[var(--foreground)] hover:bg-[var(--border)] hover:decoration-[var(--muted)] transition-colors duration-200"
                       >
                         {h.text}
                       </a>
                     ) : (
-                      h.text
+                      <span className="block pl-4">{h.text}</span>
                     )}
                   </li>
                 ))}
