@@ -4,12 +4,14 @@ const papers = [
     award: "2nd Place Best Paper",
     event: "ASME 13th International Conference on Micro and Nano Systems",
     year: "2019",
+    href: "/collection/peek-implants",
   },
   {
     title: "Process Optimization of PEEK 3D Printing Using Taguchi Methods",
     award: "3rd Place",
     event: "Chinese Society of Mechanical Engineers Conference, 35th",
     year: "2018",
+    href: "/collection/peek-implants",
   },
 ];
 
@@ -22,16 +24,20 @@ export default function Research() {
         </h2>
         <div className="space-y-8">
           {papers.map((paper) => (
-            <div key={paper.title} className="grid md:grid-cols-3 gap-8">
+            <a
+              key={paper.title}
+              href={paper.href}
+              className="grid md:grid-cols-3 gap-8 -mx-2 px-2 py-2 -my-2 hover:bg-[var(--border)]/20 transition-colors duration-200 group"
+            >
               <div>
-                <p className="text-sm font-medium">{paper.award}</p>
+                <p className="text-sm font-medium group-hover:text-[var(--foreground)] transition-colors duration-200">{paper.award}</p>
                 <p className="text-sm text-[var(--muted)]">{paper.year}</p>
               </div>
               <div className="md:col-span-2">
-                <p className="text-sm leading-relaxed">{paper.title}</p>
+                <p className="text-sm leading-relaxed underline underline-offset-2 decoration-[var(--border)] group-hover:decoration-[var(--muted)] transition-colors duration-200">{paper.title}</p>
                 <p className="text-sm text-[var(--muted)] mt-1">{paper.event}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
