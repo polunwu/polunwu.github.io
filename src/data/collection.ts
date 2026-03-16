@@ -43,8 +43,121 @@ export const collection: CollectionItem[] = [
     coverAspect: "aspect-[4/3]",
     tags: {
       type: "product",
-      tech: ["Next.js", "TypeScript", "TanStack Query", "Tailwind"],
+      tech: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Nuxt.js",
+        "Vue.js",
+        "Tailwind CSS",
+        "TanStack Query",
+        "Zustand",
+        "Radix UI",
+        "Vuex",
+        "Stripe",
+        "next-intl",
+        "Storybook",
+        "Cypress",
+        "Google Analytics 4",
+        "PostHog",
+        "Docker",
+        "Kubernetes",
+        "GitLab CI",
+      ],
       domain: ["streaming", "media", "giloo"],
+      capabilities: [
+        "Platform-scale frontend engineering",
+        "Internationalization architecture",
+        "Incremental system migration",
+        "Cross-stack product delivery",
+      ],
+    },
+    detail: {
+      projectName: "Giloo Streaming Platform",
+      role: "Software Engineer (Frontend)",
+      collaboration:
+        "Built at Giloo in collaboration with Backend Engineers, Product Managers, and Designers",
+      descriptions: [
+        {
+          type: "text",
+          content:
+            "Giloo is a documentary streaming and crowdfunding platform serving primarily Taiwanese audiences, with a growing international presence. As a Software Engineer on the frontend team over 4.5 years — working closely with backend engineers, product managers, and designers — contributions spanned continuous feature delivery on a live product serving 100K+ monthly active users: from search and notes to payment flows, NFT collections, donation, and public screening. The platform underwent several architectural milestones including a Cookie-based authentication migration, a centralized API factory rollout across all modules, and a full internationalization initiative covering 20+ modules. In 2025, the frontend was rebuilt from the ground up on Next.js 15 (App Router) with React 19 and TypeScript, re-implementing the core product on a new stack with Docker, Kubernetes, and a GitLab CI pipeline.",
+        },
+        {
+          type: "heading",
+          content: "Internationalization Architecture",
+        },
+        {
+          type: "text",
+          content:
+            "Internationalization was introduced in late 2023 as a POC and scaled into a platform-wide initiative covering 20+ modules in Traditional Chinese, Simplified Chinese, and English. The Nuxt implementation required navigating SSR page caching constraints and locale-aware Sitemap generation, rolling out incrementally across the header, footer, video pages, payment flows, and member center. In the Next.js rebuild, i18n was re-architected on next-intl with a [locale] dynamic route pattern, locale-aware OG metadata, and a locale switcher with Safari-specific cookie compatibility handling. ESLint rules were configured to enforce correct use of the i18n routing APIs across the codebase. Translation management evolved toward direct locale file ownership, reducing external tooling overhead and keeping locale files versioned alongside the product.",
+        },
+        {
+          type: "heading",
+          content: "Notes System",
+        },
+        {
+          type: "text",
+          content:
+            "The notes system was built in two distinct phases. The initial implementation introduced note creation with privacy controls, tag filtering, and a card component integrated into the video page. The more significant architectural change came when notes were decoupled from their episode bindings — enabling an independent note feed, a standalone note form, and a modal-based detail view that could surface across multiple product contexts. This unbinding required rethinking the data model, state management, and rendering strategy for a feature that had previously only existed in the context of a single video.",
+        },
+        {
+          type: "heading",
+          content: "Player Reconstruction",
+        },
+        {
+          type: "text",
+          content:
+            "The Bitmovin player underwent a full UI reconstruction to replace the default control layer with a custom-built interface — including a redesigned seek bar, custom playback controls, a buffering animation, and DRM integration for protected content. The work required operating within Bitmovin's plugin and event API: intercepting player lifecycle events and keeping the custom UI state synchronized with the underlying player without interfering with the SDK's internal behavior. Later iterations added subtitle experience improvements, a report button embedded in the player UI, and region-based playback restriction enforcement applied across cards, search results, and category pages.",
+        },
+        {
+          type: "heading",
+          content: "Next.js Rebuild — Architecture & Tech Selection",
+        },
+        {
+          type: "text",
+          content:
+            "The Next.js 15 rebuild migrated the platform off Nuxt 2 (which had reached end-of-life) and established a foundation for the platform's next phase. The core architectural decision was a server/client isomorphic API pattern: Server Components use native fetch with Next.js per-call cache strategies, while client-side data fetching uses ky + React Query — with a unified API class that automatically detects execution environment and selects the appropriate HTTP client, along with centralized 401 interception and auth token cookie management. State management was rebuilt on Zustand with a bounded store and slice pattern, with selective localStorage persistence and SSR hydration synchronization to prevent client/server state mismatch. The deployment stack was established with Docker multi-stage builds, Kubernetes manifests, and a GitLab CI pipeline across dev, staging, and production environments.",
+        },
+        {
+          type: "heading",
+          content: "Multi-Currency & Checkout",
+        },
+        {
+          type: "text",
+          content:
+            "The new platform introduced currency as a first-class UI concern, backed by a dedicated CurrencySlice in the Zustand store with persistence and SSR hydration to prevent currency flicker on page load. The currency switcher propagates selection across product cards, checkout, and billing pages. The checkout flow supported both one-time and subscription purchase paths, with a payment method selector and an invoice carrier validation step covering phone barcode and unified business number formats. Account billing management was built as a multi-step dialog flow handling subscription cancellation and restoration with intermediate confirmation states.",
+        },
+        {
+          type: "heading",
+          content: "SEO",
+        },
+        {
+          type: "text",
+          content:
+            "SEO work spanned both the Nuxt and Next.js codebases. In the Nuxt era, contributions included video Sitemap generation, JSON-LD structured data, member page indexing configuration, and robots.txt tuning. In the Next.js rebuild, SEO was addressed structurally from the start: a dynamic sitemap.ts generates routes with locale alternates for all content types including project routes, while robots.ts is environment-aware to prevent staging content from being indexed. The navigation menu is server-rendered to ensure crawlability, and OG metadata is locale-aware with a consistent title template pattern.",
+        },
+        {
+          type: "heading",
+          content: "Page Caching",
+        },
+        {
+          type: "text",
+          content:
+            "In the Nuxt codebase, page-level caching was a key constraint when rolling out internationalization — locale switching had to coexist with existing cache strategies without causing stale or mismatched content to be served. In the Next.js rebuild, caching was designed per-call at the data layer: each API request in Server Components specifies its own Next.js cache strategy (force-cache, no-store, or revalidate interval), enabling static-like performance for stable content such as category listings while ensuring user-specific or time-sensitive data is always fetched fresh.",
+        },
+        {
+          type: "heading",
+          content: "Testing",
+        },
+        {
+          type: "text",
+          content:
+            "Testing infrastructure was established and maintained across both codebases. In the Nuxt era, Storybook was introduced to create a component documentation and visual testing environment, enabling isolated development and review of UI components independent of page context. Cypress E2E tests were maintained and upgraded from v10 to v12, modernizing the test infrastructure for core user flows. In the Next.js rebuild, unit tests were written alongside new features, establishing a testing baseline for the new codebase.",
+        },
+      ],
+      gallery: [],
+      links: [],
     },
   },
   {
@@ -300,7 +413,6 @@ export const collection: CollectionItem[] = [
             "The thesis was recognized at two international and national conferences. The 2019 paper on customized PEEK implants with surface modification received the Best Paper 2nd Place Award at the ASME 13th International Conference on Micro and Nano Systems, while the 2018 process optimization study earned 3rd Place at the 35th Chinese Society of Mechanical Engineers Annual Conference.",
         },
       ],
-      gallery: [],
       gallery: [
         { src: "images/peek/gallery/1.png", type: "image" },
         { src: "images/peek/gallery/2.png", type: "image" },
