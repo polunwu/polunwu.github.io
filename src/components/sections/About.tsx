@@ -7,23 +7,23 @@ export default function About() {
       </h2>
       <div className="space-y-4 text-sm text-[var(--muted)] leading-relaxed max-w-lg">
         <p>
-          吳柏論 Polun Wu is a Taiwanese Software Engineer, a problem-solver at
-          heart, who builds to make things real. He is self-driven, creative
-          person and curious about what&apos;s next.
+          吳柏論 Polun Wu is a Taiwanese Software Engineer and a builder at
+          heart. Driven by curiosity and a problem-solving mindset, he focuses
+          on turning complex ideas into functional reality.
         </p>
         <p>
-          His path spans mechanical engineering research in precision 3D
-          printing, building interactive web products and streaming platforms,
-          and now exploring AI systems — not as a series of pivots, but as the
-          same instinct: go where technology is moving and build something
-          meaningful there.
+          His journey spans mechanical engineering research in precision 3D
+          printing, the development of interactive web products and streaming
+          platforms, and now, a deep dive into AI systems. He sees these not as
+          a series of pivots, but as a consistent instinct: following the
+          frontier of technology to build what matters next.
         </p>
         <p>
-          Polun believes the real leverage has shifted upstream: to seeing the
-          right problem, understanding the system, and knowing how to connect
-          the right engineering resources to solve it. His cross-domain
-          background makes him a natural collaborator, equally comfortable
-          working with researchers, designers, product managers, and engineers.
+          Polun believes the true leverage has shifted upstream: to identifying
+          the right problems, understanding systemic complexities, and
+          connecting the ideal engineering resources and tools to solve them. As
+          a natural cross-functional collaborator, he works seamlessly alongside
+          researchers, designers, and engineers.
         </p>
       </div>
     </section>
