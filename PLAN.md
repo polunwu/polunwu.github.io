@@ -39,6 +39,14 @@
 
 - [ ] Rewrite About description to better reflect current direction, personality, and cross-domain background
 
+### Copywriting
+
+- [ ] Proofread all site text for grammar, consistency, and tone across all sections and collection detail pages
+
+### Theme
+
+- [ ] Add dark/light mode toggle
+
 ### Experience & Research sections
 
 - [x] Experience highlights link to corresponding collection detail pages

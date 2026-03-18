@@ -7,12 +7,30 @@ const experiences = [
     period: "09/2021 – Present",
     location: "Remote, Taipei",
     highlights: [
-      { text: "Improved performance on critical pages, reducing load time by 56%, achieving LCP < 2s and CLS = 0.00 for a streaming platform serving 100K+ monthly active users", href: "/collection/giloo-platform" },
-      { text: "Led frontend tech stack modernization (TypeScript, React, Next.js, TanStack Query, Tailwind, shadcn/ui)", href: "/collection/giloo-platform" },
-      { text: "Introduced Cypress E2E testing covering 90+ complex data ↔ user scenarios", href: "/collection/giloo-platform" },
-      { text: "Built a content-creator system supporting video uploads, customizable content, and revenue management", href: "/collection/creator-system" },
-      { text: "Implemented internationalization with multi-language and multi-currency support for Taiwan, Hong Kong, and the U.S.", href: "/collection/giloo-platform" },
-      { text: "Mentored a new engineer and established onboarding workflows, documentation standards, and code review processes", href: "/collection/giloo-platform" },
+      {
+        text: "Optimized Core Web Vitals for a 100K+ MAU streaming platform, reducing load times by 56% with LCP < 2s and CLS = 0.00 on critical pages",
+        href: "/collection/giloo-platform",
+      },
+      {
+        text: "Led frontend infrastructure modernization (Next.js, TypeScript, TanStack Query) to improve developer experience and UI scalability with shadcn/ui",
+        href: "/collection/giloo-platform",
+      },
+      {
+        text: "Established Cypress E2E testing covering 90+ complex data-driven user scenarios to ensure platform stability and reliability",
+        href: "/collection/giloo-platform",
+      },
+      {
+        text: "Built a content-creator system with streamlined video uploads, modular publishing workflows, and revenue management",
+        href: "/collection/creator-system",
+      },
+      {
+        text: "Implemented internationalization capabilities for Taiwan, Hong Kong, and U.S. markets, including multi-language and multi-currency support",
+        href: "/collection/giloo-platform",
+      },
+      {
+        text: "Mentored a new engineer and standardized onboarding and code review processes to improve team collaboration",
+        href: "/collection/giloo-platform",
+      },
     ] as Highlight[],
   },
   {
@@ -21,9 +39,17 @@ const experiences = [
     period: "02/2020 – 09/2021",
     location: "Remote, Taipei",
     highlights: [
-      { text: "Developed browser-based 3D visualizations and mobile AR interactive experiences", href: "/collection/3d-ar-experiences" },
-      { text: "Designed and implemented advanced animations using CSS Animations and GSAP" },
-      { text: "Introduced new web and UI frameworks, contributing to the restructuring of 40+ pages in a network management platform redesign", href: "/collection/network-management-platform" },
+      {
+        text: "Developed browser-based 3D visualizations and mobile AR interactive experiences",
+        href: "/collection/3d-ar-experiences",
+      },
+      {
+        text: "Designed and implemented interactive web animations using GSAP and CSS animations to enhance visual storytelling",
+      },
+      {
+        text: "Contributed to the restructuring of 40+ pages in a major platform redesign, introducing modern web and UI frameworks to improve scalability",
+        href: "/collection/network-management-platform",
+      },
     ] as Highlight[],
   },
 ];
@@ -39,7 +65,9 @@ export default function Experience() {
           {experiences.map((exp) => (
             <div key={exp.company} className="grid md:grid-cols-3 gap-8 group">
               <div>
-                <p className="font-medium group-hover:text-[var(--accent)] transition-colors duration-200">{exp.company}</p>
+                <p className="font-medium group-hover:text-[var(--accent)] transition-colors duration-200">
+                  {exp.company}
+                </p>
                 <p className="text-sm text-[var(--muted)] mt-1">{exp.role}</p>
                 <p className="text-sm text-[var(--muted)]">{exp.period}</p>
               </div>
