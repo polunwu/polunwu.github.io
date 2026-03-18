@@ -43,6 +43,11 @@
 
 - [ ] Proofread all site text for grammar, consistency, and tone across all sections and collection detail pages
 
+### Meta / SEO
+
+- [ ] Update OG image
+- [ ] Update favicon
+
 ### Theme
 
 - [ ] Add dark/light mode toggle
