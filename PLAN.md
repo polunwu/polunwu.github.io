@@ -33,7 +33,9 @@
 
 ### CV
 
-- [ ] Add a CV link that opens a PDF version of the CV
+- [x] Add a CV link that opens a PDF version of the CV
+  - "Full CV" link added to Sidebar (desktop contact links) and TopNav (desktop right links)
+  - PDF served from `public/polunwu_cv.pdf`
 
 ### About / Bio
 
