@@ -13,10 +13,12 @@
   - Covers: product work, freelance, side projects
 - [x] Tag system per project for future filtering
   - Multi-dimensional tags: type (product / project / side-project / research), tech stack, domain
-- [ ] Visual relationship map across projects — Obsidian-style force graph
-  - Plan: derive nodes/edges from existing `collection.ts` tag data
-  - Consider: D3.js or react-force-graph for rendering
-  - Consider: standalone page or embedded in `/collection`
+- [x] Visual relationship map across projects — Obsidian-style force graph
+  - Standalone page at `/graph`
+  - Nodes: project (blue), tech (size by connection count), domain, capability
+  - Edges with d3-force simulation, collision, per-type link distances
+  - Hover tooltip, tag node highlight/dim, click project node → detail page
+  - Sidebar nav: Waypoints icon (lucide-react); mobile nav simplified to Collection + icon
 - [x] Collection detail page per item (`/collection/[slug]`)
   - [x] Extend `CollectionItem` type with detail fields (projectName, role, collaboration, descriptions, gallery, links)
   - [x] descriptions supports `heading`, `text`, and `code` block union types

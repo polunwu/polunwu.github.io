@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Waypoints } from "lucide-react";
+
 const navLinks = [
   { label: "Experience", href: "/#experience" },
   { label: "Collection", href: "/collection" },
@@ -16,48 +19,63 @@ export default function Sidebar() {
     <>
       {/* Mobile: fixed top header */}
       <header className="md:hidden fixed top-0 left-0 right-0 z-10 px-4 py-4 flex justify-between items-center bg-[var(--background)]">
-        <a
+        <Link
           href="/"
           className="font-[family-name:var(--font-cormorant)] text-xl font-semibold leading-tight"
           style={{ color: "var(--accent)" }}
         >
           Polun Wu
-        </a>
+        </Link>
         <nav className="flex items-center gap-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm hover:opacity-60 transition-opacity"
-              style={{ color: "var(--accent)" }}
-            >
-              {link.label}
-            </a>
-          ))}
+          <Link
+            href="/collection"
+            className="text-sm hover:opacity-60 transition-opacity"
+            style={{ color: "var(--accent)" }}
+          >
+            Collection
+          </Link>
+          <Link
+            href="/graph"
+            aria-label="Graph"
+            title="Graph"
+            className="hover:opacity-60 transition-opacity"
+            style={{ color: "var(--accent)" }}
+          >
+            <Waypoints size={16} />
+          </Link>
         </nav>
       </header>
 
       {/* Desktop: sticky left sidebar */}
       <aside className="hidden md:flex flex-col gap-6 pt-1 sticky top-6 self-start">
-        <a
+        <Link
           href="/"
           className="font-[family-name:var(--font-cormorant)] text-xl font-semibold leading-tight"
           style={{ color: "var(--accent)" }}
         >
           Polun Wu
-        </a>
+        </Link>
 
         <nav className="flex flex-col gap-1">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               className="text-sm hover:opacity-60 transition-opacity"
               style={{ color: "var(--accent)" }}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
+          <Link
+            href="/graph"
+            aria-label="Graph"
+            title="Graph"
+            className="hover:opacity-60 transition-opacity"
+            style={{ color: "var(--accent)" }}
+          >
+            <Waypoints size={16} />
+          </Link>
         </nav>
 
         <div className="flex flex-col gap-1">
