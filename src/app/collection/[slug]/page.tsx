@@ -1,5 +1,6 @@
 import { collection } from "@/data/collection";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import TopNav from "@/components/ui/TopNav";
 import Gallery from "@/components/ui/Gallery";
 
@@ -28,12 +29,12 @@ export default async function CollectionDetailPage({
         <div className="hidden md:block" />
         <main className="pt-1 pb-32">
           {/* Back link — desktop only (mobile shows in TopNav) */}
-          <a
+          <Link
             href="/collection"
             className="hidden md:inline-block text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--foreground)] transition-colors mb-12"
           >
             ← Collection
-          </a>
+          </Link>
 
           {/* Metadata */}
           <div className="mb-12 space-y-1">
@@ -41,11 +42,14 @@ export default async function CollectionDetailPage({
               {detail?.projectName ?? item.title}
             </h1>
             <p className="text-xs text-[var(--muted)]">
-              {item.yearStart}{item.yearEnd ? `–${item.yearEnd}` : ""}
+              {item.yearStart}
+              {item.yearEnd ? `–${item.yearEnd}` : ""}
               {detail?.role ? ` · ${detail.role}` : ""}
             </p>
             {detail?.collaboration && (
-              <p className="text-xs text-[var(--muted)]">{detail.collaboration}</p>
+              <p className="text-xs text-[var(--muted)]">
+                {detail.collaboration}
+              </p>
             )}
           </div>
 
@@ -54,13 +58,19 @@ export default async function CollectionDetailPage({
             <div className="space-y-6 max-w-xl mb-16">
               {detail.descriptions.map((block, i) =>
                 block.type === "heading" ? (
-                  <h2 key={i} className="text-sm font-medium text-[var(--foreground)] mt-8">
+                  <h2
+                    key={i}
+                    className="text-sm font-medium text-[var(--foreground)] mt-8"
+                  >
                     {block.content}
                   </h2>
                 ) : block.type === "text" ? (
                   <div key={i} className="space-y-4">
                     {block.content.split("\n\n").map((para, j) => (
-                      <p key={j} className="text-sm text-[var(--muted)] leading-relaxed">
+                      <p
+                        key={j}
+                        className="text-sm text-[var(--muted)] leading-relaxed"
+                      >
                         {para}
                       </p>
                     ))}
@@ -72,7 +82,7 @@ export default async function CollectionDetailPage({
                   >
                     <code>{block.content}</code>
                   </pre>
-                )
+                ),
               )}
             </div>
           )}

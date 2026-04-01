@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CollectionItem } from "@/data/collection";
 
 export default function CollectionCard({ item }: { item: CollectionItem }) {
@@ -6,7 +7,7 @@ export default function CollectionCard({ item }: { item: CollectionItem }) {
       href={`/collection/${item.slug}`}
       className="block mb-6 break-inside-avoid group"
     >
-      <div className={`${item.coverAspect} w-full mb-3 overflow-hidden`}>
+      <div className={`${item.coverAspect} w-full mb-3 overflow-hidden relative`}>
         {item.cover ? (
           item.cover.endsWith(".mp4") ? (
             <video
@@ -18,10 +19,11 @@ export default function CollectionCard({ item }: { item: CollectionItem }) {
               className="w-full h-full object-cover"
             />
           ) : (
-            <img
+            <Image
               src={`/${item.cover}`}
               alt={item.title}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           )
         ) : (

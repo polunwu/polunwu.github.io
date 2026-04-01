@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 
@@ -30,7 +31,7 @@ export default function Gallery({ items }: { items: GalleryMedia[] }) {
                   className="w-full"
                 />
               ) : (
-                <img src={`/${media.src}`} alt="" className="w-full" />
+                <Image src={`/${media.src}`} alt="" width={0} height={0} sizes="(max-width: 768px) 100vw, 50vw" className="w-full h-auto" />
               )}
             </div>
           </Dialog.Trigger>
@@ -58,11 +59,14 @@ export default function Gallery({ items }: { items: GalleryMedia[] }) {
                 className="max-w-full max-h-full object-contain cursor-default"
               />
             ) : (
-              <img
-                src={`/${selected.src}`}
-                alt=""
-                className="max-w-full max-h-full object-contain cursor-default"
-              />
+              <div className="relative w-full h-full pointer-events-none">
+                <Image
+                  src={`/${selected.src}`}
+                  alt=""
+                  fill
+                  className="object-contain"
+                />
+              </div>
             )
           )}
         </Dialog.Content>
