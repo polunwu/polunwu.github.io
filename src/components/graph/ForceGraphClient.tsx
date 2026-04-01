@@ -84,6 +84,7 @@ export default function ForceGraphClient({ data }: Props) {
   const [highlightNodeIds, setHighlightNodeIds] = useState<Set<string>>(new Set());
   const [highlightLinkIds, setHighlightLinkIds] = useState<Set<string>>(new Set());
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+  const draggingRef = useRef<string | null>(null);
 
   // Resize observer
   useEffect(() => {
@@ -413,12 +414,21 @@ export default function ForceGraphClient({ data }: Props) {
         enablePanInteraction
         d3AlphaDecay={0.02}
         d3VelocityDecay={0.2}
-        onNodeDrag={(_node, translate) => {
+        onNodeDrag={(node, translate) => {
+          const id = getNodeId(node);
+          if (draggingRef.current !== id) {
+            draggingRef.current = id;
+            applyHighlight(id);
+          }
           if (Math.abs(translate.x) > 2 || Math.abs(translate.y) > 2) {
             fgRef.current?.d3ReheatSimulation();
           }
         }}
-        onNodeDragEnd={() => fgRef.current?.d3ReheatSimulation()}
+        onNodeDragEnd={() => {
+          draggingRef.current = null;
+          clearHighlight();
+          fgRef.current?.d3ReheatSimulation();
+        }}
       />
 
       {/* Tech filter panel — desktop: right side vertical */}

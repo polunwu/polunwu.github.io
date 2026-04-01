@@ -6,10 +6,12 @@ import GraphLoader from "@/components/graph/GraphLoader";
 export default function GraphPage() {
   const data = buildGraphData();
   return (
-    <div className="h-screen p-4 md:p-6 pt-20 md:pt-6 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-8 relative">
-      <Sidebar />
+    <div className="h-screen pt-15 flex flex-col md:pt-0 md:grid md:grid-cols-[160px_1fr] relative overflow-hidden">
+      <div className="md:p-6">
+        <Sidebar />
+      </div>
 
-      <div className="relative w-full h-full overflow-hidden">
+      <div className="flex-1 relative w-full overflow-hidden md:h-full">
         <GraphLoader data={data} />
       </div>
 
