@@ -8,26 +8,26 @@ shaping: true
 
 | ID | Requirement | Status |
 |----|-------------|--------|
-| R0 | 觀者能一眼辨識「哪些是專案」 | Core goal |
-| R1 | 專案節點顯示為圓角方塊，文字內嵌，全藍底白字 | Must-have |
-| R2 | Tech 節點顯示為圓角小方塊，文字內嵌，大小依 connectedCount 整體縮放 | Must-have |
-| R3 | Domain / Capability 為極小實色圓點（非半透明），hover 才顯示 label | Must-have |
-| R4 | 側邊面板顯示 7 個高頻 tech 按鈕，點擊 highlight 相關節點與連線 | Must-have |
-| R5 | Highlight 模式與現有點擊行為保持一致體驗 | Nice-to-have |
+| R0 | Viewers can immediately identify which nodes are projects | Core goal |
+| R1 | Project nodes render as rounded rectangles with embedded text, solid blue background, white text | Must-have |
+| R2 | Tech nodes render as small rounded rectangles with embedded text, scaling in size based on connectedCount | Must-have |
+| R3 | Domain / Capability nodes are tiny solid circles (no transparency), label shown only on hover | Must-have |
+| R4 | Side panel displays high-frequency tech buttons; clicking highlights related nodes and links | Must-have |
+| R5 | Highlight behavior is consistent with existing click interaction | Nice-to-have |
 
 ---
 
-## Shape C: 方塊層級系統 + 側邊 Tech 篩選器
+## Shape C: Box Hierarchy System + Tech Filter Panel
 
-| Part | 節點類型 | 形狀 | 大小 | 顏色 |
-|------|----------|------|------|------|
-| C1 | **Project** | 圓角方塊，文字內嵌 | 固定，較大 | 全藍底 `#1400ff` + 白字 |
-| C2 | **Tech** | 圓角小方塊，文字內嵌 | 整體依 connectedCount 縮放 | 深色 `#1a1a1a` 底 + 白字 |
-| C3 | **Domain** | 極小實色圓點 | 固定，小 | 淡灰 `#c8c8c8`，hover 顯示 label |
-| C4 | **Capability** | 極小實色圓點 | 固定，更小 | 更淡灰 `#e0e0e0`，hover 顯示 label |
-| C5 | **側邊 Tech 篩選面板** | pill button 清單，固定在畫布左側或右側 | — | 對應 Tech 節點深色樣式 |
+| Part | Node Type | Shape | Size | Color |
+|------|-----------|-------|------|-------|
+| C1 | **Project** | Rounded rectangle, embedded text | Fixed, larger | Solid blue `#1400ff` + white text |
+| C2 | **Tech** | Small rounded rectangle, embedded text | Scales with connectedCount | Dark `#1a1a1a` + white text |
+| C3 | **Domain** | Tiny solid circle | Fixed, small | Light gray `#c8c8c8`, label on hover |
+| C4 | **Capability** | Tiny solid circle | Fixed, smaller | Lighter gray `#e0e0e0`, label on hover |
+| C5 | **Tech Filter Panel** | Pill button list, fixed to the right side of the canvas | — | Matches Tech node dark style |
 
-### C5 側邊篩選器內容（依出現頻率 + 面試高頻排序）
+### C5 Filter Panel Contents (ordered by frequency + interview relevance)
 
 1. TypeScript
 2. Vue.js
@@ -40,17 +40,17 @@ shaping: true
 
 ---
 
-## 視覺語言原則
+## Visual Language Principles
 
-- **方塊 = 有名字的主角**（Project、Tech 都有明確 label 內嵌）
-- **點 = 次要分類**（Domain、Capability 退為背景資訊）
-- **無半透明**：所有節點顏色為實色，靠大小與顏色深淺建立層級
-- **Highlight 時**：非相關節點 opacity 降至 0.08，相關節點保持全亮
+- **Box = named subject** (Project and Tech both have embedded labels)
+- **Dot = secondary classification** (Domain and Capability recede into the background)
+- **No transparency** — all node colors are solid; hierarchy is conveyed through size and color lightness
+- **On highlight** — non-related nodes drop to opacity 0.08; related nodes remain fully visible
 
 ---
 
-## 決定事項
+## Decisions
 
-- C5 篩選面板位置：**右側**
-- Tech 方塊：有最小尺寸保護（`min: 60×20px`），`max: 120×32px`，connectedCount 在此範圍內縮放
-- Project 方塊：設定最大寬度（`max-width: ~140px`），超過文字換行
+- C5 panel position: **right side**
+- Tech boxes: minimum size enforced (`min: 60×20px`), `max: 120×32px`, connectedCount scales within this range
+- Project boxes: max-width enforced (`max-width: ~140px`), text wraps beyond that
