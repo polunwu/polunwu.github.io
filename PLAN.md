@@ -63,6 +63,14 @@
 - [x] Research papers link to `/collection/peek-implants`
   - Hover effect: award text turns accent blue; card bg tint on hover
 
+### Graph (`/graph`)
+
+- [ ] **Zoom controls** — Add zoom in/out UI controls for users without a touchpad, scroll wheel, or on mobile devices
+
+### Navigation
+
+- [ ] **Sidebar & TopNav refactor** — Unify structure and styles between Sidebar and TopNav for consistency and maintainability
+
 ### RWD (Mobile)
 
 Design principle:
