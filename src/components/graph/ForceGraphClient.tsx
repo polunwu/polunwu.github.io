@@ -84,6 +84,7 @@ export default function ForceGraphClient({ data }: Props) {
   const [highlightNodeIds, setHighlightNodeIds] = useState<Set<string>>(new Set());
   const [highlightLinkIds, setHighlightLinkIds] = useState<Set<string>>(new Set());
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+  const [zoom, setZoom] = useState(1);
   const draggingRef = useRef<string | null>(null);
 
   // Resize observer
@@ -195,6 +196,11 @@ export default function ForceGraphClient({ data }: Props) {
     clearHighlight();
     setTooltip(null);
   }, [clearHighlight]);
+
+  const handleZoomChange = useCallback((val: number) => {
+    setZoom(val);
+    fgRef.current?.zoom(val, 200);
+  }, []);
 
   const nodeCanvasObject = useCallback(
     (node: GraphNode, ctx: CanvasRenderingContext2D, globalScale: number) => {
@@ -407,6 +413,7 @@ export default function ForceGraphClient({ data }: Props) {
         onNodeHover={handleNodeHover}
         onNodeClick={handleNodeClick}
         onBackgroundClick={handleBackgroundClick}
+        onZoom={({ k }) => { setTimeout(() => setZoom(k), 0); }}
         nodeLabel={() => ""}
         linkDirectionalArrowLength={0}
         enableNodeDrag
@@ -450,6 +457,32 @@ export default function ForceGraphClient({ data }: Props) {
             </button>
           );
         })}
+      </div>
+
+      {/* Zoom slider — desktop: bottom right */}
+      <div className="absolute bottom-4 right-4 hidden md:flex items-center z-10">
+        <input
+          type="range"
+          min={0.2}
+          max={4}
+          step={0.05}
+          value={zoom}
+          onChange={(e) => handleZoomChange(parseFloat(e.target.value))}
+          className="w-56 accent-[#1400ff] cursor-pointer"
+        />
+      </div>
+
+      {/* Zoom slider — mobile: above tech pills */}
+      <div className="absolute bottom-16 left-4 flex md:hidden items-center z-10">
+        <input
+          type="range"
+          min={0.2}
+          max={4}
+          step={0.05}
+          value={zoom}
+          onChange={(e) => handleZoomChange(parseFloat(e.target.value))}
+          className="w-56 accent-[#1400ff] cursor-pointer"
+        />
       </div>
 
       {/* Tech filter panel — mobile: bottom horizontal scrollable */}
