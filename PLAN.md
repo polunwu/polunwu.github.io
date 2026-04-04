@@ -65,11 +65,19 @@
 
 ### Graph (`/graph`)
 
-- [ ] **Zoom controls** — Add zoom in/out UI controls for users without a touchpad, scroll wheel, or on mobile devices
+- [x] **Zoom controls** — Add zoom in/out UI controls for users without a touchpad, scroll wheel, or on mobile devices
 
 ### Navigation
 
-- [ ] **Sidebar & TopNav refactor** — Unify structure and styles between Sidebar and TopNav for consistency and maintainability
+- [x] **Sidebar & TopNav refactor** — Unify structure and styles between Sidebar and TopNav for consistency and maintainability
+  - Shape C selected — see `docs/shaping/nav-refactor.md`
+  - Extract `src/data/nav.ts` (navLinks, contactLinks)
+  - Extract sub-components: `<NavLogo>`, `<NavLinks>`, `<ContactLinks>`, `<NavControls>`
+  - Sidebar desktop: NavLogo + NavLinks (col) + ContactLinks (col)
+  - Sidebar mobile: NavLogo + NavControls
+  - TopNav: NavLogo + back link (mobile) + NavControls + Clock
+  - Contact links removed from TopNav (detail pages) — acceptable for now
+  - Delete Nav.tsx
 
 ### RWD (Mobile)
 
