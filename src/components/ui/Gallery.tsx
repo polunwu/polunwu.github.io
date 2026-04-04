@@ -21,6 +21,7 @@ export default function Gallery({ items }: { items: GalleryMedia[] }) {
               className="mb-6 break-inside-avoid cursor-zoom-in"
               onClick={() => setSelected(media)}
             >
+              {/* width/height are intentionally 0 — actual size is driven by sizes + CSS */}
               {media.type === "video" ? (
                 <video
                   src={`/${media.src}`}

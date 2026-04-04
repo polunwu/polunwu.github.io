@@ -34,7 +34,6 @@ const TECH_PAD_Y = 5;
 const TECH_MIN_W = 52;
 const TECH_MAX_W = 108;
 const TECH_CORNER = 3;
-const TECH_MAX_COUNT = 4; // max connectedCount in this dataset
 
 function drawRoundedRect(
   ctx: CanvasRenderingContext2D,
@@ -75,7 +74,64 @@ function resolveNode(val: GraphNode["id"] | GraphNode | undefined): GraphNode | 
   return null;
 }
 
+function getNodeId(node: GraphNode): string {
+  return String(node.id ?? "");
+}
+
+function ZoomSlider({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (v: number) => void;
+}) {
+  return (
+    <input
+      type="range"
+      min={0.2}
+      max={4}
+      step={0.05}
+      value={value}
+      onChange={(e) => onChange(parseFloat(e.target.value))}
+      className="w-56 accent-[#1400ff] cursor-pointer"
+    />
+  );
+}
+
+function TechPillButton({
+  tech,
+  isActive,
+  onClick,
+  className,
+}: {
+  tech: string;
+  isActive: boolean;
+  onClick: () => void;
+  className?: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      style={{ fontFamily: "var(--font-mono)" }}
+      className={`px-4 rounded-full text-xs border shadow-xs transition-colors cursor-pointer whitespace-nowrap ${
+        isActive
+          ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
+          : "bg-[var(--background)] text-[var(--foreground)] border-[#a0a0a0]"
+      } ${className ?? ""}`}
+    >
+      {tech}
+    </button>
+  );
+}
+
 export default function ForceGraphClient({ data }: Props) {
+  const maxTechCount = Math.max(
+    1,
+    ...data.nodes
+      .filter((n) => n.nodeType === "tech")
+      .map((n) => n.connectedCount ?? 1)
+  );
+
   const fgRef = useRef<ForceGraphMethods<GraphNode, GraphLink> | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dims, setDims] = useState({ width: 800, height: 600 });
@@ -111,8 +167,6 @@ export default function ForceGraphClient({ data }: Props) {
     return () => el.removeEventListener("mousemove", onMove);
   }, []);
 
-  const getNodeId = (node: GraphNode): string => String(node.id ?? "");
-
   const applyHighlight = useCallback(
     (id: string) => {
       const newNodeIds = new Set<string>([id]);
@@ -141,6 +195,11 @@ export default function ForceGraphClient({ data }: Props) {
     setHighlightLinkIds(new Set());
   }, []);
 
+  // setTimeout defers the state update out of react-force-graph's zoom event
+  // handler to avoid a React batching conflict that causes stale slider values.
+  const handleZoom = useCallback(({ k }: { k: number }) => {
+    setTimeout(() => setZoom(k), 0);
+  }, []);
 
   // Force simulation tuning
   useEffect(() => {
@@ -259,7 +318,7 @@ export default function ForceGraphClient({ data }: Props) {
         });
       } else if (type === "tech") {
         const t = Math.min(
-          ((node.connectedCount ?? 1) - 1) / (TECH_MAX_COUNT - 1),
+          ((node.connectedCount ?? 1) - 1) / (maxTechCount - 1),
           1
         );
         const fontSize = (TECH_MIN_FONT + t * (TECH_MAX_FONT - TECH_MIN_FONT)) / gs;
@@ -315,7 +374,7 @@ export default function ForceGraphClient({ data }: Props) {
 
       ctx.restore();
     },
-    [highlightNodeIds]
+    [highlightNodeIds, maxTechCount]
   );
 
   const nodePointerAreaPaint = useCallback(
@@ -332,8 +391,13 @@ export default function ForceGraphClient({ data }: Props) {
       ctx.fillStyle = color;
 
       if (type === "project") {
-        const w = (PROJECT_MAX_TEXT_W + PROJECT_PAD_X * 2) / gs;
-        const h = (PROJECT_FONT * 2.7 + PROJECT_PAD_Y * 2) / gs;
+        const fontSize = PROJECT_FONT / gs;
+        ctx.font = `500 ${fontSize}px "IBM Plex Mono", monospace`;
+        const lines = getWrappedLines(ctx, node.label ?? "", PROJECT_MAX_TEXT_W / gs);
+        const lineH = fontSize * 1.35;
+        const textW = Math.max(...lines.map((l) => ctx.measureText(l).width));
+        const w = textW + (PROJECT_PAD_X / gs) * 2;
+        const h = lines.length * lineH + (PROJECT_PAD_Y / gs) * 2;
         ctx.fillRect(x - w / 2, y - h / 2, w, h);
       } else if (type === "tech") {
         const w = TECH_MAX_W / gs;
@@ -413,7 +477,7 @@ export default function ForceGraphClient({ data }: Props) {
         onNodeHover={handleNodeHover}
         onNodeClick={handleNodeClick}
         onBackgroundClick={handleBackgroundClick}
-        onZoom={({ k }) => { setTimeout(() => setZoom(k), 0); }}
+        onZoom={handleZoom}
         nodeLabel={() => ""}
         linkDirectionalArrowLength={0}
         enableNodeDrag
@@ -440,70 +504,38 @@ export default function ForceGraphClient({ data }: Props) {
 
       {/* Tech filter panel — desktop: right side vertical */}
       <div className="absolute top-1/2 right-4 -translate-y-1/2 hidden md:flex flex-col gap-2 z-10">
-        {FEATURED_TECHS.map((tech) => {
-          const isActive = selectedNodeId === `tech:${tech}`;
-          return (
-            <button
-              key={tech}
-              onClick={() => handleTechPillClick(tech)}
-              style={{ fontFamily: "var(--font-mono)" }}
-              className={`px-4 py-1.5 rounded-full text-xs border shadow-xs transition-colors cursor-pointer whitespace-nowrap ${
-                isActive
-                  ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
-                  : "bg-[var(--background)] text-[var(--foreground)] border-[#a0a0a0] hover:border-[#1a1a1a]"
-              }`}
-            >
-              {tech}
-            </button>
-          );
-        })}
+        {FEATURED_TECHS.map((tech) => (
+          <TechPillButton
+            key={tech}
+            tech={tech}
+            isActive={selectedNodeId === `tech:${tech}`}
+            onClick={() => handleTechPillClick(tech)}
+            className="py-1.5 hover:border-[#1a1a1a]"
+          />
+        ))}
       </div>
 
       {/* Zoom slider — desktop: bottom right */}
       <div className="absolute bottom-4 right-4 hidden md:flex items-center z-10">
-        <input
-          type="range"
-          min={0.2}
-          max={4}
-          step={0.05}
-          value={zoom}
-          onChange={(e) => handleZoomChange(parseFloat(e.target.value))}
-          className="w-56 accent-[#1400ff] cursor-pointer"
-        />
+        <ZoomSlider value={zoom} onChange={handleZoomChange} />
       </div>
 
       {/* Zoom slider — mobile: above tech pills */}
       <div className="absolute bottom-16 left-4 flex md:hidden items-center z-10">
-        <input
-          type="range"
-          min={0.2}
-          max={4}
-          step={0.05}
-          value={zoom}
-          onChange={(e) => handleZoomChange(parseFloat(e.target.value))}
-          className="w-56 accent-[#1400ff] cursor-pointer"
-        />
+        <ZoomSlider value={zoom} onChange={handleZoomChange} />
       </div>
 
       {/* Tech filter panel — mobile: bottom horizontal scrollable */}
       <div className="absolute bottom-4 left-0 right-0 flex md:hidden z-10 overflow-x-auto px-4 gap-2 pb-1">
-        {FEATURED_TECHS.map((tech) => {
-          const isActive = selectedNodeId === `tech:${tech}`;
-          return (
-            <button
-              key={tech}
-              onClick={() => handleTechPillClick(tech)}
-              style={{ fontFamily: "var(--font-mono)" }}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-xs border shadow-xs transition-colors cursor-pointer whitespace-nowrap ${
-                isActive
-                  ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
-                  : "bg-[var(--background)] text-[var(--foreground)] border-[#a0a0a0]"
-              }`}
-            >
-              {tech}
-            </button>
-          );
-        })}
+        {FEATURED_TECHS.map((tech) => (
+          <TechPillButton
+            key={tech}
+            tech={tech}
+            isActive={selectedNodeId === `tech:${tech}`}
+            onClick={() => handleTechPillClick(tech)}
+            className="flex-shrink-0 py-2"
+          />
+        ))}
       </div>
 
       <GraphTooltip
