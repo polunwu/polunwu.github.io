@@ -1,23 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f9f8f6;
-  --foreground: #1a1a1a;
-  --muted: #6b6b6b;
-  --border: #e2e0db;
-  --accent: #1400ff;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-.dark {
-  --background: #111110;
-  --foreground: #e8e6e1;
-  --muted: #888580;
-  --border: #2a2925;
-  --accent: #4d6fff;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -27,9 +9,31 @@
   --font-mono: var(--font-geist-mono);
 }
 
-.theme-icon-sun { display: none; }
-.dark .theme-icon-sun { display: inline; }
-.dark .theme-icon-moon { display: none; }
+@layer base {
+  :root {
+    --background: #f9f8f6;
+    --foreground: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e2e0db;
+    --accent: #1400ff;
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+  }
+}
+
+@layer utilities {
+  .dark {
+    --background: #111110;
+    --foreground: #e8e6e1;
+    --muted: #888580;
+    --border: #2a2925;
+    --accent: #4d6fff;
+  }
+
+  .theme-icon-sun { display: none; }
+  .dark .theme-icon-sun { display: block; }
+  .dark .theme-icon-moon { display: none; }
+}
 
 body {
   background: var(--background);
