@@ -12,17 +12,17 @@ export default function About() {
           on turning complex ideas into functional reality.
         </p>
         <p>
-          His journey spans mechanical engineering research in precision 3D
+          His journey spans mechanical engineering research in bio-related 3D
           printing, the development of interactive web products and streaming
-          platforms, and now, a deep dive into AI systems. He sees these not as
-          a series of pivots, but as a consistent instinct: following the
-          frontier of technology to build what matters next.
+          platforms, and now, a deep dive into AI ecosystems. He sees these as a
+          consistent instinct: following the frontier of technology to build
+          what matters next.
         </p>
         <p>
-          Polun believes the true leverage has shifted upstream: to identifying
-          the right problems, understanding systemic complexities, and
-          connecting the ideal engineering resources and tools to solve them. As
-          a natural cross-functional collaborator, he works seamlessly alongside
+          Polun believes the true leverages of engineering are: identifying the
+          right problems, understanding systemic complexities, and connecting
+          the ideal engineering resources and tools to solve them. As a natural
+          cross-functional collaborator, he works seamlessly alongside
           researchers, designers, and engineers.
         </p>
       </div>
