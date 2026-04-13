@@ -54,7 +54,13 @@
 
 ### Theme
 
-- [ ] Add dark/light mode toggle
+- [x] Add dark/light mode toggle
+  - `ThemeProvider` context with localStorage + system preference detection
+  - Blocking inline script in `<head>` to apply `.dark` class before first paint (eliminates flash)
+  - CSS-driven Moon/Sun icon swap (`.theme-icon-moon` / `.theme-icon-sun`) — no hydration mismatch
+  - Clock uses lazy initializer + `suppressHydrationWarning` — no layout shift on navigation
+  - Graph canvas colors (nodes, links, background) respond to theme via `colors` memo
+  - Dark mode accent: `#4d6fff`
 
 ### Experience & Research sections
 

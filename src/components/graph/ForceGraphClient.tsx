@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import ForceGraph2D, { type ForceGraphMethods } from "react-force-graph-2d";
 import { forceCollide, forceX, forceY } from "d3-force";
 import type { GraphData, GraphNode, GraphLink } from "@/lib/graphData";
 import GraphTooltip from "./GraphTooltip";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 type Props = { data: GraphData };
 type TooltipState = { node: GraphNode } | null;
@@ -115,8 +116,8 @@ function TechPillButton({
       style={{ fontFamily: "var(--font-mono)" }}
       className={`px-4 rounded-full text-xs border shadow-xs transition-colors cursor-pointer whitespace-nowrap ${
         isActive
-          ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
-          : "bg-[var(--background)] text-[var(--foreground)] border-[#a0a0a0]"
+          ? "bg-[var(--foreground)] text-[var(--background)] border-[var(--foreground)]"
+          : "bg-[var(--background)] text-[var(--foreground)] border-[var(--border)]"
       } ${className ?? ""}`}
     >
       {tech}
@@ -125,6 +126,29 @@ function TechPillButton({
 }
 
 export default function ForceGraphClient({ data }: Props) {
+  const { theme } = useTheme();
+
+  const colors = useMemo(() => {
+    const dark = theme === "dark";
+    return {
+      bg:                   dark ? "#111110"                    : "#f9f8f6",
+      techFill:             dark ? "#e8e6e1"                    : "#1a1a1a",
+      techText:             dark ? "#111110"                    : "#ffffff",
+      techHighlight:        dark ? "#4d6fff"                    : "#1400ff",
+      projectFill:          dark ? "#4d6fff"                    : "#1400ff",
+      projectHighlight:     "#ffffff",
+      domainCircle:         dark ? "#888580"                    : "#c8c8c8",
+      capabilityCircle:     dark ? "#6b6b6b"                    : "#d8d8d8",
+      linkTech:             dark ? "rgba(77,111,255,0.25)"        : "rgba(20,0,255,0.15)",
+      linkTechHi:           dark ? "rgba(77,111,255,0.7)"         : "rgba(20,0,255,0.5)",
+      linkDomain:           dark ? "rgba(136,133,128,0.25)"     : "rgba(107,107,107,0.2)",
+      linkDomainHi:         dark ? "rgba(136,133,128,0.6)"      : "rgba(107,107,107,0.5)",
+      linkOther:            dark ? "rgba(136,133,128,0.15)"     : "rgba(107,107,107,0.12)",
+      linkOtherHi:          dark ? "rgba(136,133,128,0.5)"      : "rgba(107,107,107,0.5)",
+      linkFaded:            dark ? "rgba(136,133,128,0.04)"     : "rgba(200,200,200,0.05)",
+    };
+  }, [theme]);
+
   const maxTechCount = Math.max(
     1,
     ...data.nodes
@@ -291,7 +315,7 @@ export default function ForceGraphClient({ data }: Props) {
         const r = PROJECT_CORNER / gs;
 
         drawRoundedRect(ctx, bx, by, boxW, boxH, r);
-        ctx.fillStyle = "#1400ff";
+        ctx.fillStyle = colors.projectFill;
         ctx.fill();
 
         if (isHighlighted && hasSelection) {
@@ -303,7 +327,7 @@ export default function ForceGraphClient({ data }: Props) {
             boxH + 3 / gs,
             r + 1.5 / gs
           );
-          ctx.strokeStyle = "#ffffff";
+          ctx.strokeStyle = colors.projectHighlight;
           ctx.lineWidth = 1.5 / gs;
           ctx.stroke();
         }
@@ -336,7 +360,7 @@ export default function ForceGraphClient({ data }: Props) {
         const r = TECH_CORNER / gs;
 
         drawRoundedRect(ctx, bx, by, boxW, boxH, r);
-        ctx.fillStyle = "#1a1a1a";
+        ctx.fillStyle = colors.techFill;
         ctx.fill();
 
         if (isHighlighted && hasSelection) {
@@ -348,12 +372,12 @@ export default function ForceGraphClient({ data }: Props) {
             boxH + 3 / gs,
             r + 1.5 / gs
           );
-          ctx.strokeStyle = "#1400ff";
+          ctx.strokeStyle = colors.techHighlight;
           ctx.lineWidth = 1.5 / gs;
           ctx.stroke();
         }
 
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = colors.techText;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(node.label ?? "", x, y);
@@ -362,11 +386,11 @@ export default function ForceGraphClient({ data }: Props) {
         const r = (type === "domain" ? 4 : 3) / gs;
         ctx.beginPath();
         ctx.arc(x, y, r, 0, 2 * Math.PI);
-        ctx.fillStyle = type === "domain" ? "#c8c8c8" : "#d8d8d8";
+        ctx.fillStyle = type === "domain" ? colors.domainCircle : colors.capabilityCircle;
         ctx.fill();
 
         if (isHighlighted && hasSelection) {
-          ctx.strokeStyle = "#1400ff";
+          ctx.strokeStyle = colors.techHighlight;
           ctx.lineWidth = 1 / gs;
           ctx.stroke();
         }
@@ -374,7 +398,7 @@ export default function ForceGraphClient({ data }: Props) {
 
       ctx.restore();
     },
-    [highlightNodeIds, maxTechCount]
+    [highlightNodeIds, maxTechCount, colors]
   );
 
   const nodePointerAreaPaint = useCallback(
@@ -427,18 +451,20 @@ export default function ForceGraphClient({ data }: Props) {
 
       let color =
         link.linkType === "tech"
-          ? "rgba(20,0,255,0.15)"
+          ? colors.linkTech
           : link.linkType === "domain"
-          ? "rgba(107,107,107,0.2)"
-          : "rgba(107,107,107,0.12)";
+          ? colors.linkDomain
+          : colors.linkOther;
 
       if (hasSelection && !isHighlighted) {
-        color = "rgba(200,200,200,0.05)";
+        color = colors.linkFaded;
       } else if (hasSelection && isHighlighted) {
         color =
           link.linkType === "tech"
-            ? "rgba(20,0,255,0.5)"
-            : "rgba(107,107,107,0.5)";
+            ? colors.linkTechHi
+            : link.linkType === "domain"
+            ? colors.linkDomainHi
+            : colors.linkOtherHi;
       }
 
       ctx.strokeStyle = color;
@@ -448,7 +474,7 @@ export default function ForceGraphClient({ data }: Props) {
       ctx.lineTo(tgt.x ?? 0, tgt.y ?? 0);
       ctx.stroke();
     },
-    [highlightLinkIds]
+    [highlightLinkIds, colors]
   );
 
   const handleTechPillClick = useCallback(
@@ -470,7 +496,7 @@ export default function ForceGraphClient({ data }: Props) {
         graphData={data}
         width={dims.width}
         height={dims.height}
-        backgroundColor="var(--background)"
+        backgroundColor={colors.bg}
         nodeCanvasObject={nodeCanvasObject}
         nodePointerAreaPaint={nodePointerAreaPaint}
         linkCanvasObject={linkCanvasObject}
