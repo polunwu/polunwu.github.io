@@ -99,6 +99,10 @@ Design principle:
 - [ ] **Sections** — verify Experience / Research / Education spacing on mobile
 - [ ] **Clock** — verify no overlap with Sidebar header on mobile
 
+### Dev / DX
+
+- [ ] Find a faster alternative to `npm run build` for Claude Code to verify task success — static export builds are slow; investigate whether `tsc --noEmit` + `next lint` is sufficient to catch type and lint errors without a full build
+
 ## Prompts
 
 ### Portfolio project description writer

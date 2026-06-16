@@ -5,7 +5,6 @@ import ForceGraph2D, { type ForceGraphMethods } from "react-force-graph-2d";
 import { forceCollide, forceX, forceY } from "d3-force";
 import type { GraphData, GraphNode, GraphLink } from "@/lib/graphData";
 import GraphTooltip from "./GraphTooltip";
-import { useTheme } from "@/components/ui/ThemeProvider";
 
 type Props = { data: GraphData };
 type TooltipState = { node: GraphNode } | null;
@@ -126,28 +125,25 @@ function TechPillButton({
 }
 
 export default function ForceGraphClient({ data }: Props) {
-  const { theme } = useTheme();
-
   const colors = useMemo(() => {
-    const dark = theme === "dark";
     return {
-      bg:                   dark ? "#111110"                    : "#f9f8f6",
-      techFill:             dark ? "#e8e6e1"                    : "#1a1a1a",
-      techText:             dark ? "#111110"                    : "#ffffff",
-      techHighlight:        dark ? "#4d6fff"                    : "#1400ff",
-      projectFill:          dark ? "#4d6fff"                    : "#1400ff",
+      bg:                   "#f9f8f6",
+      techFill:             "#1a1a1a",
+      techText:             "#ffffff",
+      techHighlight:        "#1400ff",
+      projectFill:          "#1400ff",
       projectHighlight:     "#ffffff",
-      domainCircle:         dark ? "#888580"                    : "#c8c8c8",
-      capabilityCircle:     dark ? "#6b6b6b"                    : "#d8d8d8",
-      linkTech:             dark ? "rgba(77,111,255,0.25)"        : "rgba(20,0,255,0.15)",
-      linkTechHi:           dark ? "rgba(77,111,255,0.7)"         : "rgba(20,0,255,0.5)",
-      linkDomain:           dark ? "rgba(136,133,128,0.25)"     : "rgba(107,107,107,0.2)",
-      linkDomainHi:         dark ? "rgba(136,133,128,0.6)"      : "rgba(107,107,107,0.5)",
-      linkOther:            dark ? "rgba(136,133,128,0.15)"     : "rgba(107,107,107,0.12)",
-      linkOtherHi:          dark ? "rgba(136,133,128,0.5)"      : "rgba(107,107,107,0.5)",
-      linkFaded:            dark ? "rgba(136,133,128,0.04)"     : "rgba(200,200,200,0.05)",
+      domainCircle:         "#c8c8c8",
+      capabilityCircle:     "#d8d8d8",
+      linkTech:             "rgba(20,0,255,0.15)",
+      linkTechHi:           "rgba(20,0,255,0.5)",
+      linkDomain:           "rgba(107,107,107,0.2)",
+      linkDomainHi:         "rgba(107,107,107,0.5)",
+      linkOther:            "rgba(107,107,107,0.12)",
+      linkOtherHi:          "rgba(107,107,107,0.5)",
+      linkFaded:            "rgba(200,200,200,0.05)",
     };
-  }, [theme]);
+  }, []);
 
   const maxTechCount = Math.max(
     1,

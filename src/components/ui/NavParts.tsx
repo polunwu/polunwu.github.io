@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Waypoints, Sun, Moon } from "lucide-react";
+import { Waypoints } from "lucide-react";
 import { navLinks, contactLinks } from "@/data/nav";
-import { useTheme } from "@/components/ui/ThemeProvider";
 
 export function NavLogo() {
   return (
@@ -61,7 +60,6 @@ export function ContactLinks({ orientation }: OrientationProps) {
 }
 
 export function NavControls() {
-  const { toggle } = useTheme();
   return (
     <div className="flex items-center gap-4 mt-1">
       <Link
@@ -73,15 +71,6 @@ export function NavControls() {
       >
         <Waypoints size={16} />
       </Link>
-      <button
-        onClick={toggle}
-        aria-label="Toggle theme"
-        className="hover:opacity-60 transition-opacity cursor-pointer"
-        style={{ color: "var(--accent)" }}
-      >
-        <Moon size={16} className="theme-icon-moon" />
-        <Sun size={16} className="theme-icon-sun" />
-      </button>
     </div>
   );
 }

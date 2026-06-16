@@ -7,23 +7,26 @@ export default function About() {
       </h2>
       <div className="space-y-4 text-sm text-[var(--muted)] leading-relaxed max-w-lg">
         <p>
-          吳柏論 Polun Wu is a Taiwanese Software Engineer and a builder at
-          heart. Driven by curiosity and a problem-solving mindset, he focuses
-          on turning complex ideas into functional reality.
+          吳柏論 Polun Wu is a software engineer driven by curiosity about how
+          complex systems are designed and built. After more than five years in
+          frontend engineering, his interests have expanded into backend
+          systems, AI infrastructure, and software architecture. His latest side
+          project is a retrieval-augmented generation (RAG) system built from
+          scratch to better explore the mechanics behind modern LLMs system.
         </p>
         <p>
-          His journey spans mechanical engineering research in bio-related 3D
-          printing, the development of interactive web products and streaming
-          platforms, and now, a deep dive into AI ecosystems. He sees these as a
-          consistent instinct: following the frontier of technology to build
-          what matters next.
+          Before entering the software industry, Polun conducted graduate
+          research in biomedical 3D printing, where he developed a strong
+          foundation in research methodology and analytical thinking. His
+          professional experience shaped his ability to translate product ideas
+          into maintainable software while collaborating across engineering,
+          design, and research.
         </p>
         <p>
-          Polun believes the true leverages of engineering are: identifying the
-          right problems, understanding systemic complexities, and connecting
-          the ideal engineering resources and tools to solve them. As a natural
-          cross-functional collaborator, he works seamlessly alongside
-          researchers, designers, and engineers.
+          Polun values depth over hype. He enjoys reasoning from first
+          principles, pays close attention to implementation details, and
+          believes good software comes from thoughtful, research-driven
+          engineering.
         </p>
       </div>
     </section>
