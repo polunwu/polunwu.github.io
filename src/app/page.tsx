@@ -2,6 +2,7 @@ import Sidebar from "@/components/ui/Sidebar";
 import Clock from "@/components/ui/Clock";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
+import Projects from "@/components/sections/Projects";
 import Research from "@/components/sections/Research";
 import Education from "@/components/sections/Education";
 
@@ -12,6 +13,7 @@ export default function Home() {
 
       <main className="space-y-16 pt-1 pb-32">
         <About />
+        <Projects />
         <Experience />
         <Research />
         <Education />
