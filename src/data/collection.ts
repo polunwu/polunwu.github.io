@@ -33,6 +33,123 @@ export type CollectionItem = {
 
 export const collection: CollectionItem[] = [
   {
+    slug: "golden-book-rag",
+    yearStart: 2026,
+    title: "Golden Book RAG",
+    description:
+      "A from-scratch retrieval-augmented generation system: upload a PDF book, ask questions, and get answers grounded in the text with page and section citations.",
+    cover: "images/golden-book-rag/cover.png",
+    coverAspect: "aspect-square",
+    tags: {
+      type: "side-project",
+      tech: [
+        "FastAPI",
+        "Python",
+        "PostgreSQL",
+        "pgvector",
+        "Gemini",
+        "PyMuPDF",
+        "Alembic",
+        "psycopg",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "TanStack Query",
+        "Zod",
+        "Docker",
+        "Kamal",
+        "Hetzner",
+      ],
+      domain: ["ai", "rag", "semantic-search"],
+      capabilities: [
+        "RAG pipeline engineering",
+        "Vector search & retrieval",
+        "Grounded generation & hallucination control",
+        "Self-hosted deployment",
+      ],
+    },
+    detail: {
+      projectName: "Golden Book RAG",
+      role: "Software Engineer",
+      collaboration: "Solo project",
+      descriptions: [
+        {
+          type: "text",
+          content:
+            "This project began as I started reading Chip Huyen's “AI Engineering: Building Applications with Foundation Models” and getting to know the ecosystem around LLM applications — so I set out to build this LLM-related side project to learn it hands-on.",
+        },
+        {
+          type: "text",
+          content:
+            "Golden Book RAG is a tool for asking questions about any PDF book and getting answers cited back to the exact page and section. It was built as a learning project to understand how retrieval-augmented generation actually works under the hood — so the entire pipeline (parsing, chunking, embeddings, semantic search, grounded generation) is hand-rolled rather than assembled from LangChain or LlamaIndex. The two design goals that shaped every decision were answer accuracy and reducing hallucination: the system is built to ground every answer in retrieved passages and to refuse rather than guess when the book doesn't support an answer. The stack is FastAPI + PostgreSQL/pgvector for the backend, Gemini for embeddings and generation, and a Next.js frontend, deployed end-to-end on a self-hosted Hetzner VPS.",
+        },
+        {
+          type: "heading",
+          content: "Ingest Pipeline",
+        },
+        {
+          type: "text",
+          content:
+            "Uploading a book kicks off a background ingest pipeline: the PDF is streamed to disk, then parsed with PyMuPDF, chunked, embedded, and stored. Chunking preserves hierarchical section metadata (section path, title, and level) alongside page ranges, so retrieved passages can be cited and displayed with their place in the book's structure, and so future heading-aware or parent-child retrieval can build on the same records. The ingest stage owns a strict status lifecycle (pending → processing → ready → failed) and is idempotent per book — re-ingesting deletes and re-inserts a book's chunks in a single transaction — with failures recorded on a fresh connection so an aborted transaction can't swallow the error.",
+        },
+        {
+          type: "heading",
+          content: "Embeddings & Retrieval",
+        },
+        {
+          type: "text",
+          content:
+            "Embeddings use Gemini's gemini-embedding-001, Matryoshka-truncated to 1536 dimensions and L2-normalized so that cosine distance reduces to a dot product. Retrieval is asymmetric — chunks are embedded as documents and questions as queries (different task types) — which measurably improves relevance. Vectors are stored in pgvector and searched with an HNSW index over cosine distance.",
+        },
+        {
+          type: "heading",
+          content: "Grounded Answers & Refusal Gates",
+        },
+        {
+          type: "text",
+          content:
+            "The core of the accuracy/anti-hallucination work lives in a single answer-decision point with two refusal gates. The first is a cheap pre-LLM floor: if the best retrieved passage scores below a cosine threshold, the system refuses immediately without ever calling the model — fast, and it never fabricates from weak context. The second is a model-level soft refusal via structured output: the model returns a typed GroundedAnswer with a can_answer flag, and if it judges the context insufficient, it declines. Either gate produces a language-matched refusal with empty citations, so hard and soft refusals share one contract — a refusal always means no citations. Generation runs as extractive RAG with the reasoning budget deliberately set to zero, keeping answers tied to the source text rather than the model's own priors.",
+        },
+        {
+          type: "heading",
+          content: "Evaluation Harness",
+        },
+        {
+          type: "text",
+          content:
+            "To measure retrieval quality rather than guess at it, the project includes an offline evaluation harness computing Recall@k and MRR over hand-written cases. Ground truth is kept durable — expressed as page ranges and section substrings rather than brittle chunk indices — and resolved to the current chunking at eval time, so the test set survives re-chunking. Keeping reasoning effort minimal during development was a deliberate choice: it exposes retrieval weaknesses directly instead of letting the model paper over them, giving trustworthy Recall@k and MRR numbers before any answer-quality tuning.",
+        },
+        {
+          type: "heading",
+          content: "Frontend",
+        },
+        {
+          type: "text",
+          content:
+            "The frontend is a Next.js 16 (App Router) + React 19 app with a two-route flow: a Library for uploading and listing books, and a status-routed book detail page that switches between processing, failed, and ready (ask) states. Data flows through a single typed fetch wrapper with hand-written zod schemas mirroring the backend contract, validating structure as a runtime drift backstop. Ingest status is surfaced by polling that automatically stops once every book reaches a terminal state, and deletes are optimistic with rollback.",
+        },
+        {
+          type: "heading",
+          content: "Deployment",
+        },
+        {
+          type: "text",
+          content:
+            "The whole system runs on a self-hosted Hetzner VPS, deployed with Kamal 2: the Next.js frontend is the primary app behind kamal-proxy (which handles automatic Let's Encrypt TLS), with FastAPI and the pgvector Postgres running as accessories with persistent volumes for the database and uploaded PDFs. The workflow supports zero-downtime frontend swaps, separate backend image builds, and one-command rollbacks, with a full containerized mode locally to rehearse the production packaging before shipping.",
+        },
+      ],
+      gallery: [
+        { src: "images/golden-book-rag/gallery/1.png", type: "image" },
+        { src: "images/golden-book-rag/gallery/2.png", type: "image" },
+      ],
+      links: [
+        { label: "Live Demo", href: "https://books.polunwu.com" },
+        { label: "GitHub", href: "https://github.com/polunwu/golden-book-rag" },
+      ],
+    },
+  },
+  {
     slug: "giloo-platform",
     yearStart: 2021,
     yearEnd: 2026,

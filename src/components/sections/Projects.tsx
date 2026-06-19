@@ -8,7 +8,7 @@ const projects: Project[] = [
   {
     name: "golden-book-rag",
     description:
-      "A tool for asking questions about any PDF book, with answers cited to the page. I'm building the retrieval pipeline from scratch, chunking, embeddings, and semantic search, to learn how RAG works.",
+      "A tool for asking questions about any PDF book, with answers cited to the page. I'm building the retrieval pipeline from scratch: chunking, embeddings, and semantic search, to learn how RAG works while improving answer accuracy and reducing hallucination.",
     stack: ["FastAPI", "Postgres/pgvector", "Gemini", "Next.js"],
   },
 ];

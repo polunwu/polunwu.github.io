@@ -5,7 +5,7 @@ export default function CollectionCard({ item }: { item: CollectionItem }) {
   return (
     <a
       href={`/collection/${item.slug}`}
-      className="block mb-6 break-inside-avoid group"
+      className="block group"
     >
       <div className={`${item.coverAspect} w-full mb-3 overflow-hidden relative`}>
         {item.cover ? (

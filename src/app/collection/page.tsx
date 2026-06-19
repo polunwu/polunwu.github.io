@@ -1,5 +1,5 @@
 import { collection } from "@/data/collection";
-import CollectionCard from "@/components/ui/CollectionCard";
+import MasonryGrid from "@/components/ui/MasonryGrid";
 import Sidebar from "@/components/ui/Sidebar";
 import Clock from "@/components/ui/Clock";
 
@@ -12,11 +12,7 @@ export default function CollectionPage() {
         <h2 className="text-xs uppercase tracking-widest text-[var(--muted)] mb-12">
           Collection
         </h2>
-        <div className="columns-1 sm:columns-2 md:columns-3 gap-6">
-          {collection.map((item) => (
-            <CollectionCard key={item.slug} item={item} />
-          ))}
-        </div>
+        <MasonryGrid items={collection} />
       </main>
 
       <div className="hidden md:block fixed top-6 right-6">
